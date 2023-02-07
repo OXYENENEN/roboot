@@ -1,0 +1,4 @@
+[build]
+functions = "functions"
+[template.environment]
+ BOT_TOKEN = 5846981452:AAGt-fxps_ufQlx4QXH-T1hXF_GUfjRwMKo
