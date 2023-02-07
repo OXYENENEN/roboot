@@ -11,6 +11,6 @@ res.json((
 ));
 ));
 
-app.use(router);
+app.use('/.netlify/function',router);
 
 module.exports.handler = serverless(app);
