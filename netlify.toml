@@ -1,6 +1,5 @@
 [build]
 functions = "functions"
-command = "netlify-lambda install && mkdir ./public"
 command = "npm run dev"
 [[redirects]]
 from = "/api/*"
