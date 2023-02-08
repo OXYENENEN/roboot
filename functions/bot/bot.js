@@ -113,40 +113,21 @@ function addActionBot1(id_btn, text) {
     })
 // Для редактирования
 
-function addActionBot2(id_btn, src_img, text) {
+function addActionBot2(id_btn, img, text) {
       bot.action('btn_UL_A2', async (ctx) => {
         try {
-          await ctx.replyWithHTML('<b>Клиенту рекомендована программа Старт-1</b>', Markup.inlineKeyboard(
+          await
+            ctx.replyWithHTML('<b>Клиенту рекомендована программа Старт-1</b>', Markup.inlineKeyboard(
             [
-              [Markup.button.callback('Дорожная карта', 'btn_FL_2'), Markup.button.callback('Положение', 'btn_FL_3')],
-              [Markup.button.callback('Условия', 'btn_FL_3')]
+              [Markup.button.callback('Дорожная карта', 'btn_UL_A21'), Markup.button.callback('Положение', 'btn_UL_A22')],
+              [Markup.button.callback('Условия', 'btn_UL_A23')]
             ]
           ))
         } catch (e) {
           console.error(e)
         }
       })
-  
-    bot.action('btn_UL_A2', 'img/A2/Fasie.jpg', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithHTML(text.textA2, {
-        disable_web_page_preview: true
-      })
-    } catch (e) {
-      console.error(e)
-    }
-  })
-     
-    // Не трогал
-    bot.action('btn_UL_4', async (ctx) => {
-      try {
-        await ctx.replyWithHTML('<b>Рекомендован кредит МСП банка</b>')
-      } catch (e) {
-        console.error(e)
-      }
-    })
-  
+
     bot.action('btn_UL_2', async (ctx) => {
       try {
         await ctx.replyWithHTML('<b>Выручка больше 30 млн руб?</b>', Markup.inlineKeyboard(
@@ -219,6 +200,43 @@ function addActionBot2(id_btn, src_img, text) {
       }
     })
   }
+  function addActionBot(id_btn, exports, preview) {
+    // Старт
+      bot.action('btn_UL_A21', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithHTML(text.start_anketa)
+        } catch (e) {
+          console.error(e)
+        }
+      })
+      bot.action('btn_UL_A22', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithHTML(text.start_polozhenie)
+        } catch (e) {
+          console.error(e)
+        }
+      })
+      bot.action('btn_UL_A23', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithHTML(text.start_uslovia)
+        } catch (e) {
+          console.error(e)
+        }
+      }) 
+  }
+
+ 
+// Не трогал
+bot.action('btn_UL_4', async (ctx) => {
+  try {
+    await ctx.replyWithHTML('<b>Рекомендован кредит МСП банка</b>')
+  } catch (e) {
+    console.error(e)
+  }
+})
 
 
  // Грантовые программы
@@ -302,7 +320,7 @@ function addActionBot(id_btn, exports, preview) {
 
   // Обработчик кнопок с помощью функции
   addActionBot1('tn_FL_1', text)
-  addActionBot('btn_UL_A2', './img/1.jpg', false)
+  addActionBot2('btn_UL_A2', text)
   addActionBot('btn_2', text.text2, false)
   addActionBot('btn_3', text.text3, false)
   addActionBot('btn_4', text.text4, false)
@@ -310,6 +328,10 @@ function addActionBot(id_btn, exports, preview) {
   addActionBot('btn_4', text.text6, false)
   addActionBot('btn_3', text.text7, false)
   addActionBot('btn_4', text.text8, false)
+  addActionBot('btn_UL_A21', text.start_anketa, true)
+  addActionBot('btn_UL_A22', text.start_polozhenie, true)
+  addActionBot('btn_UL_A23', text.start_uslovia, false)
+
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {

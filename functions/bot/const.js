@@ -5,6 +5,18 @@ const commands = `
 /info - Грантовые программы
 /faq - Частые вопросы
 `
+const start_anketa = `<u>Анкета по конкурсу</u> <a href="https://drive.google.com/file/d/1oGhvfgAUArIJq54_Ne_HWJObYCmQRsv-/view">ссылка</a>`
+
+const start_polozhenie = `<u>Положение по конкурсу</u> <a href="https://fasie.ru/upload/docs/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A1%D1%82%D0%B0%D1%80%D1%82-1%202022.3_%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82.pdf">ссылка</a>`
+
+const start_uslovia = `<u>Старт-1</u>
+Размер гранта	
+До 4 млн руб
+Срок гранта	1 год
+Внебюджетное софинансирование	Не требуется	
+Направление расходов	Проведение НИОКР. Подробный перечень расходов	
+Участники	Физ.лица или юр.лица.
+`
 
 const text1 = `
 1. <u>Положение Старт-1</u> <a href="https://fasie.ru/upload/docs/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A1%D1%82%D0%B0%D1%80%D1%82-1%202022.3_%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82.pdf">тык</a>
@@ -77,3 +89,6 @@ module.exports.text6 = text6
 module.exports.text7 = text7
 module.exports.text8 = text8
 module.exports.textA2 = textA2
+module.exports.start_anketa = start_anketa
+module.exports.start_polozhenie = start_polozhenie
+module.exports.start_uslovia = start_uslovia
