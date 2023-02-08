@@ -310,7 +310,6 @@ function addActionBot(id_btn, exports, preview) {
   addActionBot('btn_4', text.text6, false)
   addActionBot('btn_3', text.text7, false)
   addActionBot('btn_4', text.text8, false)
-  addActionBot('btn_UL_A2', text.textA2, './img/1.jpg', my_const.text1, truefalse)
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {
