@@ -8,7 +8,15 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go</a>`));
+bot.start(ctx => {
+  console.log("Received /start command")
+  try {
+    return ctx.reply("Hi")
+  } catch (e) {
+    console.error("error in start action:", e)
+    return ctx.reply("Error occured")
+  }
+})
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 
