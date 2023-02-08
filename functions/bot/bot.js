@@ -8,15 +8,8 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start(ctx => {
-  console.log("Received /start command")
-  try {
-    return ctx.reply("Hi")
-  } catch (e) {
-    console.error("error in start action:", e)
-    return ctx.reply("Error occured")
-  }
-})
+bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go</a>`));
+
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 
@@ -29,9 +22,11 @@ bot.command('faq', async (ctx) => ctx.replyWithHTML(text.text));
 // Подбор программы
 bot.command('go', async (ctx) => {
     try {
-      await ctx.replyWithHTML('<b>Кто ваш клиент?</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Клиент Физ.лицо (ИП)', 'btn_FL_1'), Markup.button.callback('Клиент ЮЛ', 'btn_UL_1')]
+          [Markup.button.callback('Клиент Физ.лицо (ИП)', 'btn_FL_1')],
+          [Markup.button.callback('ООО', 'btn_UL_1')],
+          [Markup.button.callback('НКО', 'btn_N_1')]
         ]
       ))
     } catch (e) {
