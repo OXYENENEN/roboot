@@ -63,6 +63,10 @@ const text8 = `
 3 <u>Подчёркнутый Текст</u> для проверки обработчика и <a href="https://youtube.com/">ссылка с превью</a>
 `
 
+const textA2 = `
+3 <u>Клиенту рекомендована </u> <a href="https://fasie.ru/upload/docs/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A1%D1%82%D0%B0%D1%80%D1%82-1%202022.3_%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82.pdf">программа Старт-1</a>
+`
+
 module.exports.commands = commands
 module.exports.text = text1
 module.exports.text2 = text2
@@ -72,3 +76,4 @@ module.exports.text5 = text5
 module.exports.text6 = text6
 module.exports.text7 = text7
 module.exports.text8 = text8
+module.exports.textA2 = textA2

@@ -9,7 +9,6 @@ Markup
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go</a>`));
-
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 
@@ -89,9 +88,11 @@ function addActionBot1(id_btn, text) {
 
     bot.action('btn_UL_1', async (ctx) => {
       try {
-        await ctx.replyWithHTML('<b>Выручка больше 10 млн руб?</b>', Markup.inlineKeyboard(
+        await ctx.replyWithHTML('<b>Уточни какая выручка у компании</b>', Markup.inlineKeyboard(
           [
-            [Markup.button.callback('Да', 'btn_UL_2'), Markup.button.callback('Нет', 'btn_UL_3')]
+            [Markup.button.callback('Выручка менее 10 млн', 'btn_UL_A1')],
+            [Markup.button.callback('Выручка свыше 10 млн', 'btn_UL_B1')],
+            [Markup.button.callback('Выручка больше 30 млн', 'btn_UL_C1')]
           ]
         ))
       } catch (e) {
@@ -99,26 +100,30 @@ function addActionBot1(id_btn, text) {
       }
     })
 
-    bot.action('btn_UL_3', async (ctx) => {
+    bot.action('btn_UL_A1', async (ctx) => {
       try {
-        await ctx.replyWithHTML('<b>Компании более 2 лет?</b>', Markup.inlineKeyboard(
+        await ctx.replyWithHTML('<b>Какой срок регистрации компании?</b>', Markup.inlineKeyboard(
           [
-            [Markup.button.callback('Да', 'btn_UL_4'), Markup.button.callback('Нет', 'btn_UL_5')]
+            [Markup.button.callback('Менее 2 лет', 'btn_UL_A2'), Markup.button.callback('Свыше 2 лет', 'btn_UL_A3')]
           ]
         ))
       } catch (e) {
         console.error(e)
       }
     })
-
-    bot.action('btn_UL_5', async (ctx) => {
-      try {
-        await ctx.replyWithHTML('<b>Рекомендована программа Старт-1</b>')
-      } catch (e) {
-        console.error(e)
-      }
-    })
+// Для редактирования
+    bot.action('btn_UL_A2', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML(text.textA2, {
+        disable_web_page_preview: true
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  })
      
+    // Не трогал
     bot.action('btn_UL_4', async (ctx) => {
       try {
         await ctx.replyWithHTML('<b>Рекомендован кредит МСП банка</b>')
@@ -289,6 +294,7 @@ function addActionBot(id_btn, exports, preview) {
   addActionBot('btn_4', text.text6, false)
   addActionBot('btn_3', text.text7, false)
   addActionBot('btn_4', text.text8, false)
+  addActionBot('btn_UL_A2', text.textA2, false)
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {
