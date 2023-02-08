@@ -46,7 +46,7 @@ function addActionBot1(id_btn, text) {
         console.error(e)
       }
     })
-
+  }
     bot.action('btn_FL_2', async (ctx) => {
       try {
         await ctx.answerCbQuery()
@@ -112,7 +112,22 @@ function addActionBot1(id_btn, text) {
       }
     })
 // Для редактирования
-    bot.action('btn_UL_A2', async (ctx) => {
+
+function addActionBot2(id_btn, src_img, text) {
+      bot.action('btn_UL_A2', async (ctx) => {
+        try {
+          await ctx.replyWithHTML('<b>Клиенту рекомендована программа Старт-1</b>', Markup.inlineKeyboard(
+            [
+              [Markup.button.callback('Дорожная карта', 'btn_FL_2'), Markup.button.callback('Положение', 'btn_FL_3')],
+              [Markup.button.callback('Условия', 'btn_FL_3')]
+            ]
+          ))
+        } catch (e) {
+          console.error(e)
+        }
+      })
+  
+    bot.action('btn_UL_A2', 'img/A2/Fasie.jpg', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML(text.textA2, {
@@ -287,6 +302,7 @@ function addActionBot(id_btn, exports, preview) {
 
   // Обработчик кнопок с помощью функции
   addActionBot1('tn_FL_1', text)
+  addActionBot('btn_UL_A2', './img/1.jpg', false)
   addActionBot('btn_2', text.text2, false)
   addActionBot('btn_3', text.text3, false)
   addActionBot('btn_4', text.text4, false)
@@ -294,7 +310,7 @@ function addActionBot(id_btn, exports, preview) {
   addActionBot('btn_4', text.text6, false)
   addActionBot('btn_3', text.text7, false)
   addActionBot('btn_4', text.text8, false)
-  addActionBot('btn_UL_A2', text.textA2, false)
+  addActionBot('btn_UL_A2', text.textA2, './img/1.jpg', my_const.text1, truefalse)
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {
