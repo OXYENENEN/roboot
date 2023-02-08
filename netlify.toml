@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 [build]
-functions = "functions"
-[template.environment]
-=======
-[build]
-functions = "functions"
-[template.environment]
->>>>>>> c568540ff28a9d5124f2c6ca0bbab77107b4c311
- BOT_TOKEN = 5846981452:AAGt-fxps_ufQlx4QXH-T1hXF_GUfjRwMKo
+functions = "functions-build"
+command = "netlify-lambda install
+&& mkdir ./public"
+[[redirects]]
+from = " /api/*"
+to = "/.netlify/functions/:splat"
+status = 200
