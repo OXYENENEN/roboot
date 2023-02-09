@@ -39,7 +39,7 @@ function addActionBot1(id_btn, text) {
       console.error(e)
     }
 })}
-function addActionBot(id_btn, exports, preview) {
+function addActionBotA(id_btn, exports, preview) {
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
@@ -57,11 +57,29 @@ bot.action('btn_A22', async (ctx) => {
     }
 })}
 
+function addActionBotA(id_btn, exports, preview) {
+  bot.action('btn_A31', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML(text.textA31)
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+  function addActionBotA(id_btn, exports, preview) {
+    bot.action('btn_A41', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithHTML(text.textA41)
+      } catch (e) {
+        console.error(e)
+      }})}
+
+
 
 
 
 
 // Обработчик функций
 addActionBot1('btn_A', text)
-addActionBotA('btn_A11', text.textA11, false)
-addActionBotA12('btn_A21', text.textA21, true)
+addActionBotA('btn_A11', text.textA11, true)

@@ -57,25 +57,6 @@ bot.command('go', async (ctx) => {
           }
 })}
 
-function addActionBotA(id_btn, exports, preview) {
-      bot.action('btn_A11', async (ctx) => {
-        try {
-          await ctx.answerCbQuery()
-          await ctx.replyWithHTML(text.textA11)
-        } catch (e) {
-          console.error(e)
-        }
-})
-bot.action('btn_A12', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithHTML(text.textA12)
-    } catch (e) {
-      console.error(e)
-    }
-})}
-
-
 function addActionBot1(id_btn, text) {
   bot.action('btn_A2', async (ctx) => {
     try {
@@ -88,7 +69,7 @@ function addActionBot1(id_btn, text) {
       console.error(e)
     }
 })}
-function addActionBot(id_btn, exports, preview) {
+function addActionBotA(id_btn, exports, preview) {
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
@@ -106,12 +87,27 @@ bot.action('btn_A22', async (ctx) => {
     }
 })}
 
-// 
+function addActionBotA(id_btn, exports, preview) {
+  bot.action('btn_A31', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML(text.textA31)
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+  function addActionBotA(id_btn, exports, preview) {
+    bot.action('btn_A41', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithHTML(text.textA41)
+      } catch (e) {
+        console.error(e)
+      }})}
+// Обработчик функций
+addActionBot1('btn_A', text)
+addActionBotA('btn_A11', text.textA11, true)
 
-
-// Обработчик кнопок с помощью функции
- addActionBot1('btn_FL_1', text)
-addActionBotA('btn_A11', text.textA11, false)
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {
