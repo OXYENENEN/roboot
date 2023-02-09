@@ -57,7 +57,7 @@ bot.command('go', async (ctx) => {
           }
 })}
 
-function addActionBot(id_btn, exports, preview) {
+function addActionBotA(id_btn, exports, preview) {
       bot.action('btn_A11', async (ctx) => {
         try {
           await ctx.answerCbQuery()
@@ -80,11 +80,8 @@ bot.action('btn_A12', async (ctx) => {
 
 
 // Обработчик кнопок с помощью функции
-  addActionBot1('btn_FL_1', text)
-  addActionBotA('btn_A', text)
-addActionBotA11('btn_A11', text.textA11, false)
-addActionBotA12('btn_A12', text.textA12, false)
-
+ addActionBot1('btn_FL_1', text)
+addActionBotA('btn_A11', text.textA11, false)
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async event => {
