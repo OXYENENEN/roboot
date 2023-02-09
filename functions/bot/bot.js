@@ -29,7 +29,7 @@ bot.command('go', async (ctx) => {
       console.error(e)
     }
   })
-  function addActionBot1(id_btn, text) {
+    function addActionBot12(id_btn, text) {
     bot.action('btn_A', async (ctx) => {
       try {
         await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
@@ -37,15 +37,16 @@ bot.command('go', async (ctx) => {
             [Markup.button.callback('ООО', 'btn_A1')],
             [Markup.button.callback('ИП/КФХ', 'btn_A2')],
             [Markup.button.callback('Кооператив', 'btn_A3')],
-            [Markup.button.callback('Физическое лицо', 'btn_A4')]
+            [Markup.button.callback('Физическое лицо', 'btn_A41')]
           ]
         ))
+        await ctx.replyWithPhoto()
       } catch (e) {
         console.error(e)
       }
     })
 
-        bot.action('btn_A1', async (ctx) => {
+bot.action('btn_A1', async (ctx) => {
           try {
             await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
               [
@@ -57,19 +58,38 @@ bot.command('go', async (ctx) => {
           }
 })}
 
+function addActionBotA9(id_btn, exports, preview) {
+  bot.action('btn_A11', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML(text.textA11)
+    } catch (e) {
+      console.error(e)
+    }
+})
+bot.action('btn_A12', async (ctx) => {
+try {
+  await ctx.answerCbQuery()
+  await ctx.replyWithHTML(text.textA12)
+} catch (e) {
+  console.error(e)
+}
+})}
+
 function addActionBot1(id_btn, text) {
   bot.action('btn_A2', async (ctx) => {
     try {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Семейная животноводческая ферма', 'btn_A21'), Markup.button.callback('Агротуризм', 'btn_A22')]
+          [Markup.button.callback('Семейная животноводческая ферма', 'btn_A21')], 
+          [Markup.button.callback('Агротуризм', 'btn_A22')]
         ]
       ))
     } catch (e) {
       console.error(e)
     }
 })}
-function addActionBotA(id_btn, exports, preview) {
+function addActionBotA2(id_btn, exports, preview) {
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
@@ -88,10 +108,10 @@ bot.action('btn_A22', async (ctx) => {
 })}
 
 function addActionBotA(id_btn, exports, preview) {
-  bot.action('btn_A31', async (ctx) => {
+  bot.action('btn_A3', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithHTML(text.textA31)
+      await ctx.replyWithHTML(text.textA3)
     } catch (e) {
       console.error(e)
     }
@@ -105,11 +125,16 @@ function addActionBotA(id_btn, exports, preview) {
       }})}
 // Обработчик функций
 addActionBot1('btn_A', text)
-addActionBot1('btn_A1', text)
-addActionBot1('btn_A2', text)
-addActionBotA('btn_A21', text.textA21, true)
+addActionBot12('btn_A1', text)
+addActionBot12('btn_A2', text)
+addActionBotA9('btn_A11', text.textA11, true)
+addActionBotA9('btn_A12', text.textA12, true)
+addActionBot12('btn_A3', text)
+addActionBot12('btn_A3', text)
+addActionBot12('btn_A4', text)
+addActionBotA2('btn_A21', text.textA21, true)
 addActionBotA('btn_A22', text.textA12, true)
-addActionBotA('btn_A31', text.textA31, true)
+addActionBotA('btn_A31', text.textA3, true)
 addActionBotA('btn_A41', text.textA41, true)
 
 

@@ -42,13 +42,17 @@ const textA21 =
     const textA41 = 
     `<u>Рекомендуется программа Агростартап</u> 
         <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Агростартап. Краткая справка</a>`
-const textA31 = 
+const textA3 = 
         `<u>Рекомендуется программа Развитие материально-технической базы</u> 
-            <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
+    {        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
+
+const img = '<img src="img/1.jpg"></a>'
+
 module.exports.textA11 = textA11
 module.exports.textA12 = textA12
 module.exports.textA21 = textA21
-module.exports.textA31 = textA31
+module.exports.textA3 = textA3
 module.exports.textA41 = textA41
 module.exports.commands = commands
 module.exports.text = text1
+module.exports.img = this.img
