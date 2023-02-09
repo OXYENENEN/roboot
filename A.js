@@ -27,16 +27,28 @@ function addActionBot1(id_btn, text) {
           }
 })}
 
+function addActionBot1(id_btn, text) {
+  bot.action('btn_A2', async (ctx) => {
+    try {
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Семейная животноводческая ферма', 'btn_A21'), Markup.button.callback('Агротуризм', 'btn_A22')]
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+})}
 function addActionBot(id_btn, exports, preview) {
-      bot.action('btn_A11', async (ctx) => {
+      bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
-          await ctx.replyWithHTML(text.textA11)
+          await ctx.replyWithHTML(text.textA21)
         } catch (e) {
           console.error(e)
         }
 })
-bot.action('btn_A12', async (ctx) => {
+bot.action('btn_A22', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML(text.textA12)
@@ -50,6 +62,6 @@ bot.action('btn_A12', async (ctx) => {
 
 
 // Обработчик функций
-addActionBotA('btn_A', text)
-addActionBotA11('btn_A11', text.textA11, false)
-addActionBotA12('btn_A12', text.textA12, false)
+addActionBot1('btn_A', text)
+addActionBotA('btn_A11', text.textA11, false)
+addActionBotA12('btn_A21', text.textA21, true)
