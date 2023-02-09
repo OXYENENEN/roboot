@@ -76,6 +76,36 @@ bot.action('btn_A12', async (ctx) => {
 })}
 
 
+function addActionBot1(id_btn, text) {
+  bot.action('btn_A2', async (ctx) => {
+    try {
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Семейная животноводческая ферма', 'btn_A21'), Markup.button.callback('Агротуризм', 'btn_A22')]
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+})}
+function addActionBot(id_btn, exports, preview) {
+      bot.action('btn_A21', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithHTML(text.textA21)
+        } catch (e) {
+          console.error(e)
+        }
+})
+bot.action('btn_A22', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML(text.textA12)
+    } catch (e) {
+      console.error(e)
+    }
+})}
+
 // 
 
 
