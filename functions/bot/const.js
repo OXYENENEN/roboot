@@ -31,11 +31,11 @@ const text1 = `
 Все равно его не брошу -
 Потому что он хороший.`
 const textA11 = 
-`<u>Агропрогресс</u> 
-<a href="https://drive.google.com/file/d/1oGhvfgAUArIJq54_Ne_HWJObYCmQRsv-/view">ссылка</a>`
+`<u>Агропрогресс</u>
+<a href="https://drive.google.com/file/d/1HgVUojeoJJlFl9jWd7swPzItNUCt4mnD/view?usp=share_link">Агростартап. Краткая справка</a>`
 const textA12 = 
 `<u>Агротуризм</u> 
-<a href="https://drive.google.com/file/d/1oGhvfgAUArIJq54_Ne_HWJObYCmQRsv-/view">ссылка</a>`
+<a href="https://drive.google.com/file/d/1tzQGZRVoQe0tuS0BGiK94nXuQ7OEa4XV/view?usp=share_link">Агротуризм.Презентация</a>`
 
 module.exports.textA11 = textA11
 module.exports.textA12 = textA12
