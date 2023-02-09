@@ -14,16 +14,21 @@ bot.on('sticker', (ctx) => ctx.reply('👍'));
 bot.command('joke', async (ctx) => ctx.replyWithHTML('Гранд'));
 bot.command('faq', async (ctx) => ctx.replyWithHTML(text.text));
 
+
 // Подбор программы
 bot.command('go', async (ctx) => {
     try {
-      await ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
+      await ctx.replyWithPhoto('https://cdnn21.img.ria.ru/images/07e6/06/07/1793672027_0:0:0:0_0x0_100_0_0_0ecdcf92dce797e3e57e9fa4f3eb5aec.png',
+      {
+        caption: 'Какой вид деятельности у клиента?'
+    }, Markup.inlineKeyboard(
         [
           [Markup.button.callback('Сельское хозяйство', 'btn_A')],
           [Markup.button.callback('IT', 'btn_B')],
           [Markup.button.callback('Клиенту интересно кредитование', 'btn_C')],
           [Markup.button.callback('Промышленность', 'btn_D')]
         ]
+        
       ))
     } catch (e) {
       console.error(e)
