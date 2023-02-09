@@ -95,8 +95,7 @@ function addActionBotA(id_btn, exports, preview) {
     } catch (e) {
       console.error(e)
     }
-  })}
-  function addActionBotA(id_btn, exports, preview) {
+  })
     bot.action('btn_A41', async (ctx) => {
       try {
         await ctx.answerCbQuery()
@@ -106,7 +105,12 @@ function addActionBotA(id_btn, exports, preview) {
       }})}
 // Обработчик функций
 addActionBot1('btn_A', text)
-addActionBotA('btn_A11', text.textA11, true)
+addActionBot1('btn_A1', text)
+addActionBot1('btn_A2', text)
+addActionBotA('btn_A21', text.textA21, true)
+addActionBotA('btn_A22', text.textA12, true)
+addActionBotA('btn_A31', text.textA31, true)
+addActionBotA('btn_A41', text.textA41, true)
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
