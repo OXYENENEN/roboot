@@ -45,8 +45,36 @@ const textA21 =
 const textA3 = 
         `<u>Рекомендуется программа Развитие материально-технической базы</u> 
     {        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
+    const textC1 = 
+    `<u>Рекомендован кредит МСП банка</u>
+1. СЕМИЛЕТКА ДЛЯ БИЗНЕСА.
+Сумма кредита до 10 млн рублей включительно
+Валюта рубли РФ
+Срок 7 лет
+Ставка  17,5% годовых
+Срок регистрации от 12 месяцев
+{        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>
 
-const img = '<img src="img/1.jpg"></a>'
+2. Экспресс-инвест
+Сумма кредита От 3 млн до 30 млн рублей
+Срок кредита До 36 месяцев
+
+3. Экспресс-поддержка
+Сумма кредита От 50 тыс. до 30 млн рублей
+Срок кредита До 36 месяцев
+
+4. Экспресс-Франшиза
+Сумма кредита От 50 тыс. до 30 млн рублей
+Срок кредита До 36 месяцев
+
+5. Экспресс оборотный
+Сумма кредита От 50 тыс. до 30 млн рублей
+Срок кредита До 36 месяцев
+`
+const textC2 = 
+`<u>Рекомендован кредит Банка Казани</u> 
+{        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
+
 
 module.exports.textA11 = textA11
 module.exports.textA12 = textA12
@@ -55,4 +83,5 @@ module.exports.textA3 = textA3
 module.exports.textA41 = textA41
 module.exports.commands = commands
 module.exports.text = text1
-module.exports.img = this.img
+module.exports.textC1 = textC1
+module.exports.textC2 = textC2
