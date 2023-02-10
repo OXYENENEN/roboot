@@ -19,7 +19,7 @@ bot.command('faq', async (ctx) => ctx.replyWithHTML(text.text));
 // Подбор программы
 bot.command('go', async (ctx) => {
     try {
-      await ctx.replyWithPhoto('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Сельское хозяйство', 'btn_A')],
           [Markup.button.callback('IT', 'btn_B')],
@@ -34,6 +34,8 @@ bot.command('go', async (ctx) => {
     function addActionBot12(id_btn, text) {
     bot.action('btn_A', async (ctx) => {
       try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithPhoto({ source: 'functions/bot/img/agro1.jpg' });
         await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
           [
             [Markup.button.callback('ООО', 'btn_A1')],
@@ -64,6 +66,7 @@ function addActionBotA9(id_btn, exports, preview) {
   bot.action('btn_A11', async (ctx) => {
     try {
       await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/grant-agroprogress.jpg' });
       await ctx.replyWithHTML(text.textA11)
     } catch (e) {
       console.error(e)
@@ -72,6 +75,7 @@ function addActionBotA9(id_btn, exports, preview) {
 bot.action('btn_A12', async (ctx) => {
 try {
   await ctx.answerCbQuery()
+  await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
   await ctx.replyWithHTML(text.textA12)
 } catch (e) {
   console.error(e)
@@ -95,6 +99,7 @@ function addActionBotA2(id_btn, exports, preview) {
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
+          await ctx.replyWithPhoto({ source: 'functions/bot/img/semfarm.jpg' });
           await ctx.replyWithHTML(text.textA21)
         } catch (e) {
           console.error(e)
@@ -103,6 +108,7 @@ function addActionBotA2(id_btn, exports, preview) {
 bot.action('btn_A22', async (ctx) => {
     try {
       await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
       await ctx.replyWithHTML(text.textA12)
     } catch (e) {
       console.error(e)
@@ -113,14 +119,18 @@ function addActionBotA(id_btn, exports, preview) {
   bot.action('btn_A3', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithHTML(text.textA3)
-    } catch (e) {
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/agro_razv.jpg' });
+      await ctx.replyWithHTML(`Рекомендуется программа Развитие материально-технической базы`, Markup.inlineKeyboard([
+        [Markup.button.url('Развитие материально-технической базы', 'https://www.fasie.ru/upload/docs/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A1%D1%82%D0%B0%D1%80%D1%82-1%202022.3_%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82.pdf')]]))
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
+      } catch (e) {
       console.error(e)
     }
   })
     bot.action('btn_A41', async (ctx) => {
       try {
         await ctx.answerCbQuery()
+        await ctx.replyWithPhoto({ source: 'functions/bot/img/agrostartap.jpg' });
         await ctx.replyWithHTML(text.textA41)
       } catch (e) {
         console.error(e)

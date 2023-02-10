@@ -32,7 +32,7 @@ const text1 = `
 Потому что он хороший.`
 const textA11 = 
 `<u>Агропрогресс</u>
-<a href="https://drive.google.com/file/d/1HgVUojeoJJlFl9jWd7swPzItNUCt4mnD/view?usp=share_link">Агростартап. Краткая справка</a>`
+<a href="https://drive.google.com/file/d/1HgVUojeoJJlFl9jWd7swPzItNUCt4mnD/view?usp=share_link">Агропрогресс. Краткая справка</a>`
 const textA12 = 
 `<u>Агротуризм</u> 
 <a href="https://drive.google.com/file/d/1tzQGZRVoQe0tuS0BGiK94nXuQ7OEa4XV/view?usp=share_link">Агротуризм.Презентация</a>`
