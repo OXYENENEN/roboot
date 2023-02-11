@@ -19,22 +19,15 @@ bot.command('faq', async (ctx) => ctx.replyWithHTML(text.text));
 
 // Подбор программы
 bot.command('go', async (ctx) => {
-    try {
-      await ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
-        [
-          [Markup.button.callback('Сельское хозяйство', 'btn_A')],
-          [Markup.button.callback('IT', 'btn_B')],
-          [Markup.button.callback('Клиенту интересно кредитование', 'btn_C')],
-          [Markup.button.callback('Промышленность', 'btn_D')]
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
+  sendStartMessage(ctx);
 })
 
 bot.action('go', ctx => {
   ctx.deleteMessage(); 
+  sendStartMessage(ctx);
+})
+
+function sendStartMessage(ctx){
   try {
     ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
       [
@@ -48,8 +41,6 @@ bot.action('go', ctx => {
     console.error(e)
   }
 }
-)
-
 
 // Сельхоз
 function addActionBot12(id_btn, text) {
@@ -65,7 +56,6 @@ function addActionBot12(id_btn, text) {
             [Markup.button.callback('Физическое лицо', 'btn_A41')]
           ]
         ))
-        await ctx.replyWithPhoto()
       } catch (e) {
         console.error(e)
       }
@@ -176,17 +166,15 @@ function addActionBot12(id_btn, text) {
 // Только под инвестиционные цели. МСП Банк
 function addActionBotС(id_btn, exports, preview) {
   bot.action('btn_C1', async (ctx) => {
-    ctx.deleteMessage();
+   // ctx.deleteMessage();
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
-      await ctx.replyWithHTML(text.textC1, {
-        reply_markup: {
-          inline_keyboard: [
-            { text: "Назад в меню выбора", callback_data: 'go' }
-          ]
-        }
-      })
+      await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Назад в меню выбора', 'go')],
+        ]
+      ))
       await ctx.replyWithDocument( { source: 'functions/bot/docs/loan1.pdf'})
     } catch (e) {
       console.error(e)
@@ -194,17 +182,15 @@ function addActionBotС(id_btn, exports, preview) {
 })
 // На любые цели. Банк Казани
 bot.action('btn_C2', async (ctx) => {
-  ctx.deleteMessage();
+  // ctx.deleteMessage();
   try {
     await ctx.answerCbQuery()
     await ctx.replyWithPhoto({ source: 'functions/bot/img/loan2.jpg' });
-    await ctx.replyWithHTML(text.textC2, {
-      reply_markup: {
-        inline_keyboard: [
-          { text: "Назад в меню выбора", callback_data: 'go' }
-        ]
-      }
-    })
+    await ctx.replyWithHTML(text.textC2, Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Назад в меню выбора', 'go')],
+      ]
+    ))
     await ctx.replyWithDocument( { source: ''})
   } catch (e) {
     console.error(e)
