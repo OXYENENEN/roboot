@@ -43,12 +43,12 @@ function sendStartMessage(ctx){
 }
 
 // Сельхоз
-function addActionBot12(id_btn, text) {
+function addActionBot2(id_btn, text) {
     bot.action('btn_A', async (ctx) => {
       try {
-        await ctx.answerCbQuery()
-        await ctx.replyWithPhoto({ source: 'functions/bot/img/agro1.jpg' });
-        await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
+ //       await ctx.answerCbQuery()
+ //       await ctx.replyWithPhoto({ source: 'functions/bot/img/agro1.jpg' });
+ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
           [
             [Markup.button.callback('ООО', 'btn_A1')],
             [Markup.button.callback('ИП/КФХ', 'btn_A2')],
@@ -60,7 +60,6 @@ function addActionBot12(id_btn, text) {
         console.error(e)
       }
     })
-
 bot.action('btn_A1', async (ctx) => {
           try {
             await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
@@ -73,7 +72,7 @@ bot.action('btn_A1', async (ctx) => {
           }
 })}
 
-function addActionBotA9(id_btn, exports, preview) {
+function addActionBot1(id_btn, exports, preview) {
   bot.action('btn_A11', async (ctx) => {
     try {
       await ctx.answerCbQuery()
@@ -93,7 +92,7 @@ try {
 }
 })}
 
-function addActionBot1(id_btn, text) {
+function addActionBot2(id_btn, text) {
   bot.action('btn_A2', async (ctx) => {
     try {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
@@ -106,7 +105,7 @@ function addActionBot1(id_btn, text) {
       console.error(e)
     }
 })}
-function addActionBotA2(id_btn, exports, preview) {
+function addActionBot1(id_btn, exports, preview) {
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
@@ -126,7 +125,7 @@ bot.action('btn_A22', async (ctx) => {
     }
 })}
 
-function addActionBotA(id_btn, exports, preview) {
+function addActionBot1(id_btn, exports, preview) {
   bot.action('btn_A3', async (ctx) => {
     try {
       await ctx.answerCbQuery()
@@ -147,7 +146,7 @@ function addActionBotA(id_btn, exports, preview) {
         console.error(e)
       }})}
 // Кредитование
-function addActionBot12(id_btn, text) {
+function addActionBotC(id_btn, text) {
   bot.action('btn_C', async (ctx) => {
     try {
       await ctx.answerCbQuery()
@@ -164,7 +163,7 @@ function addActionBot12(id_btn, text) {
   })}
 // Кредитование под какие цели?
 // Только под инвестиционные цели. МСП Банк
-function addActionBotС(id_btn, exports, preview) {
+function addActionBotС1(id_btn, exports, preview) {
   bot.action('btn_C1', async (ctx) => {
    // ctx.deleteMessage();
     try {
@@ -199,21 +198,19 @@ bot.action('btn_C2', async (ctx) => {
 }
 
 // Обработчик функций
-addActionBot1('btn_A', text)
-addActionBot12('btn_A1', text)
-addActionBot12('btn_A2', text)
-addActionBotA9('btn_A11', text.textA11, true)
-addActionBotA9('btn_A12', text.textA12, true)
-addActionBot12('btn_A3', text)
-addActionBot12('btn_A3', text)
-addActionBot12('btn_A4', text)
-addActionBotA2('btn_A21', text.textA21, true)
-addActionBotA('btn_A22', text.textA12, true)
-addActionBotA('btn_A31', text.textA3, true)
-addActionBotA('btn_A41', text.textA41, true)
-// Обработчик функций
-addActionBotС('btn_С2', text.textС1, true)
-addActionBotС('btn_С3', text.textС2, true)
+addActionBot2('btn_A', text)
+addActionBot2('btn_A1', text)
+addActionBot2('btn_A2', text)
+addActionBot1('btn_A11', text.textA11, true)
+addActionBot1('btn_A12', text.textA12, true)
+addActionBot1('btn_A21', text.textA21, true)
+addActionBot1('btn_A22', text.textA12, true)
+addActionBot1('btn_A3', text.textA3, true)
+addActionBot1('btn_A41', text.textA41, true)
+// Обработчик функций править
+addActionBotC('btn_С', text)
+addActionBotС1('btn_С1', text.textС1, true)
+addActionBotС1('btn_С2', text.textС2, true)
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
