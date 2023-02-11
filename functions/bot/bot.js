@@ -59,7 +59,8 @@ ctx.replyWithHTML('<b>Уточни форму регистрации заяви�
       } catch (e) {
         console.error(e)
       }
-    })
+    })}
+    function addActionBot2(id_btn, text) { 
 bot.action('btn_A1', async (ctx) => {
           try {
             await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
