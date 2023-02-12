@@ -1,14 +1,14 @@
 // Промышленность
 // Уточни форму регистрации заявителя
 function addActionBot1b(id_btn, text) {
-  bot.action('btn_B', async (ctx) => {
+  bot.action('btn_D', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/dt.jpg' });
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/c3.jpg' });
       await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('ООО', 'btn_B1')],
-          [Markup.button.callback('Физическое лицо/ИП', 'btn_B2')],
+          [Markup.button.callback('ООО', 'btn_D1')],
+          [Markup.button.callback('Физическое лицо/ИП', 'btn_D2')],
         ]
       ))
     } catch (e) {
@@ -16,14 +16,15 @@ function addActionBot1b(id_btn, text) {
     }
   })
 // ООО
-// Как долго зарегистрировано ЮЛ?
-  bot.action('btn_B1', async (ctx) => {
+// Какой объем выручки у компании?
+  bot.action('btn_D1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithHTML('<b>Как долго зарегистрировано ЮЛ?я</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Какой объем выручки у компании?</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Больше года', 'btn_B11')],
-          [Markup.button.callback('Меньше года', 'btn_B12')],
+          [Markup.button.callback('Менее 30 млн', 'btn_D11')],
+          [Markup.button.callback('Более 30 млн', 'btn_D12')],
+          [Markup.button.callback('Более 800 млн', 'btn_D13')]
         ]
       ))
     } catch (e) {
@@ -31,7 +32,7 @@ function addActionBot1b(id_btn, text) {
     }
   })
 // ФЛ/ИП
-  bot.action('btn_B2', async (ctx) => {
+  bot.action('btn_D2', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
@@ -47,40 +48,42 @@ function addActionBot1b(id_btn, text) {
     }
   })
 // Выберите особенности проекта
-// Больше года
-  bot.action('btn_B11', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithHTML('<b>Выберите особенности проектая</b>', Markup.inlineKeyboard(
-        [
-          [Markup.button.callback('Разработка инновационной продукции', 'btn_B111')],
-          [Markup.button.callback('Расширение реализации инновационной продукции', 'btn_B112')],
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
-  })
-// Меньше года
-bot.action('btn_B12', async (ctx) => {
+// Менее 30 млн
+bot.action('btn_D11', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Старт', 'btn_start')],
+        [Markup.button.callback('Акселерация', 'btn_axel')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+// Более 30 млн
+bot.action('btn_D12', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Разработка инновационной продукции', 'btn_d121')],
+        [Markup.button.callback('Расширение производства инновационной продукции', 'btn_d122')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
+// Разработка инновационной программы
+  bot.action('btn_d121', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт', 'btn_start')],
-          [Markup.button.callback('Акселерация', 'btn_axel')],
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
-  })
-// Разработка инновационной программы
-  bot.action('btn_B111', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
-        [
           [Markup.button.callback('Развитие', 'btn_grow')],
           [Markup.button.callback('Другое', 'btn_other2')],
         ]
@@ -90,141 +93,33 @@ bot.action('btn_B12', async (ctx) => {
     }
   })
 // Расширение реализации инновационной продукции
-  bot.action('btn_B112', async (ctx) => {
+  bot.action('btn_d122', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Коммерциализация', 'btn_fsik')],
-          [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
-          ], [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii'), 
-          [Markup.button.callback('РФРИТ', 'btn_rfr')], 
-          [Markup.button.callback('Другое', 'btn_other1')],],
+          [Markup.button.callback('Другое', 'btn_other1')],]
       ))
     } catch (e) {
       console.error(e)
     }
   })
-}
-// Старт
-function addActionBot2b(id_btn, exports, preview) {
-  bot.action('btn_start', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_start1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
-        [Markup.button.callback('Назад в меню выбора', 'go')]
-      ))
-      } catch (e) {
-      console.error(e)
-    }
-  })
-
-  bot.action('btn_start1', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
-    } catch (e) {
-      console.error(e)
-    }})
-    bot.action('btn_start2', async (ctx) => {
-      try {
-        await ctx.answerCbQuery()
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Старт-1.docx'})
-      } catch (e) {
-        console.error(e)
-      }})
-      bot.action('btn_start3', async (ctx) => {
-        try {
-          await ctx.answerCbQuery()
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/02_Информация для ТЗ.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/03_Запрос_маркетинг.xlsx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проекта.xlsx'})
-        } catch (e) {
-          console.error(e)
-        }})
-}
-// Старт-ЦТ
-function addActionBot2b(id_btn, exports, preview) {
-  bot.action('btn_Startdt', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_start1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
-        [Markup.button.callback('Назад в меню выбора', 'go')]
-      ))
-      } catch (e) {
-      console.error(e)
-    }
-  })
-
-  bot.action('btn_start1', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
-    } catch (e) {
-      console.error(e)
-    }})
-    bot.action('btn_start2', async (ctx) => {
-      try {
-        await ctx.answerCbQuery()
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Старт-1.docx'})
-      } catch (e) {
-        console.error(e)
-      }})
-      bot.action('btn_start3', async (ctx) => {
-        try {
-          await ctx.answerCbQuery()
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/02_Информация для ТЗ.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/03_Запрос_маркетинг.xlsx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проекта.xlsx'})
-        } catch (e) {
-          console.error(e)
-        }})
-}
-// Старт-ИИ
-function addActionBot2b(id_btn, exports, preview) {
-  bot.action('btn_StartI', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_start1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
-        [Markup.button.callback('Назад в меню выбора', 'go')]
-      ))
-      } catch (e) {
-      console.error(e)
-    }
-  })
-
-  bot.action('btn_start1', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
-    } catch (e) {
-      console.error(e)
-    }})
-    bot.action('btn_start2', async (ctx) => {
-      try {
-        await ctx.answerCbQuery()
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Старт-1.docx'})
-      } catch (e) {
-        console.error(e)
-      }})
-      bot.action('btn_start3', async (ctx) => {
-        try {
-          await ctx.answerCbQuery()
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/02_Информация для ТЗ.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/03_Запрос_маркетинг.xlsx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проекта.xlsx'})
-        } catch (e) {
-          console.error(e)
-        }})
+// Более 800 млн
+bot.action('btn_D13', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Коммерциализация', 'btn_fsik')],
+        [Markup.button.callback('ФРП', 'btn_frp')],
+        [Markup.button.callback('Минпромторг', 'btn_mpt')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
 }
 // Акселерация
 bot.command('btn_axel', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
@@ -393,6 +288,88 @@ function addActionBot2b(id_btn, exports, preview) {
           console.error(e)
         }})
 }
+// ФРП
+function addActionBot1d(id_btn, exports, preview) {
+  bot.action('btn_frp', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/frp.jpg' });
+      await ctx.replyWithHTML(text.textFrp, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_kom1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_kom2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_kom3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
+// МинПромТорг
+function addActionBot2d(id_btn, exports, preview) {
+  bot.action('btn_mpt', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/mpt.jpg' });
+      await ctx.replyWithHTML(text.textMrp, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_kom1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_kom2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_kom3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
 // РФРИТ
 function addActionBot2b(id_btn, exports, preview) {
   bot.action('btn_rfr', async (ctx) => {
@@ -502,7 +479,8 @@ bot.action('btn_rfr3', async (ctx) => {
 bot.command('btn_other1', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
 // Другое2
 bot.command('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
-// Обработчик функций
-addActionBot1b('btn_B1', text)
 
-addActionBot2b('btn_start', text.textStart, true)
+
+// Обработчик функций
+addActionBot1d('btn_frp', text.textFrp, true)
+addActionBot2d('btn_mpt', text.textMrp, true)

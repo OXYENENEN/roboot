@@ -19,20 +19,35 @@ bot.on('sticker', (ctx) => ctx.reply('👍'));
 // });
 bot.command('joke', async (ctx) => ctx.replyWithHTML('Гранд'));
 bot.command('faq', async (ctx) => ctx.replyWithHTML(text.text));
-
-
-
+bot.command('fsie', async (ctx) => {
+      try {
+        await ctx.replyWithPhoto({ source: 'functions/bot/img/1.png' });
+        await ctx.replyWithHTML('<b>Гранты ФСИ</b>', Markup.inlineKeyboard(
+          [
+            [Markup.button.callback('Старт-1', 'btn_start'),
+            Markup.button.callback('Старт-ЦТ', 'btn_startdt'),
+            Markup.button.callback('Старт-ИИ', 'btn_startI')],
+            [Markup.button.callback('Акселерация', 'btn_axel')],
+            [Markup.button.callback('Развитие', 'btn_grow')],
+            [Markup.button.callback('Коммерциализация', 'btn_fsik')],
+            [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
+            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
+            [Markup.button.callback('РФРИТ', 'btn_rfr')], 
+            [Markup.button.callback('Другое', 'btn_other2')]
+          ]
+        ))
+      } catch (e) {
+        console.error(e) }
+})
 
 // Подбор программы
 bot.command('go', async (ctx) => {
   sendStartMessage(ctx);
 })
-
 bot.action('go', ctx => {
   ctx.deleteMessage(); 
   sendStartMessage(ctx);
 })
-
 function sendStartMessage(ctx){
   try {
     ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
@@ -48,6 +63,7 @@ function sendStartMessage(ctx){
   }
 }
 
+// Раздел 1 
 // Сельхоз
 function addActionBot27(id_btn, text) {
     bot.action('btn_A', async (ctx) => {
@@ -78,7 +94,7 @@ bot.action('btn_A1', async (ctx) => {
             console.error(e)
           }
 })}
-
+// Агропрогресс
 function addActionBot1a(id_btn, exports, preview) {
   bot.action('btn_A11', async (ctx) => {
     try {
@@ -86,27 +102,29 @@ function addActionBot1a(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/grant-agroprogress.jpg' });
       await ctx.replyWithHTML(text.textA11, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Назад в меню выбора', 'go')],
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
-})
+          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
+        ))
+        } catch (e) {
+        console.error(e)
+      }
+    })
+// Агротуризм
 bot.action('btn_A12', async (ctx) => {
 try {
   await ctx.answerCbQuery()
   await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
   await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
     [
-      [Markup.button.callback('Назад в меню выбора', 'go')],
-    ]
-  ))
-} catch (e) {
-  console.error(e)
-}
+      [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+      [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+      [Markup.button.callback('Назад в меню выбора', 'go')]]
+    ))
+    } catch (e) {
+    console.error(e)
+  }
 })}
-
 function addActionBot2(id_btn, text) {
   bot.action('btn_A2', async (ctx) => {
     try {
@@ -121,33 +139,36 @@ function addActionBot2(id_btn, text) {
     }
 })}
 function addActionBot1(id_btn, exports, preview) {
+// Семейная ж ф
       bot.action('btn_A21', async (ctx) => {
         try {
           await ctx.answerCbQuery()
           await ctx.replyWithPhoto({ source: 'functions/bot/img/semfarm.jpg' });
           await ctx.replyWithHTML(text.textA21, Markup.inlineKeyboard(
             [
-              [Markup.button.callback('Назад в меню выбора', 'go')],
-            ]
-          ))
-        } catch (e) {
-          console.error(e)
-        }
-})
+              [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+              [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+              [Markup.button.callback('Назад в меню выбора', 'go')]]
+            ))
+            } catch (e) {
+            console.error(e)
+          }
+        })
+// Агротуризм
 bot.action('btn_A22', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
       await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Назад в меню выбора', 'go')],
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
-})}
-
+          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
+        ))
+        } catch (e) {
+        console.error(e)
+      }
+    })}
 function addActionBot10c(id_btn, exports, preview) {
   bot.action('btn_A3', async (ctx) => {
     try {
@@ -157,7 +178,6 @@ function addActionBot10c(id_btn, exports, preview) {
         [Markup.button.callback('Положение по конкурсу','btn_D1')], [Markup.button.callback('Анкета клиенту','btn_D2')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ]))
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
       } catch (e) {
       console.error(e)
     }
@@ -190,11 +210,10 @@ function addActionBot10c(id_btn, exports, preview) {
       } catch (e) {
         console.error(e)
       }})}
-
 // Раздел 2
 // IT
 // Уточни форму регистрации заявителя
-function addActionBot1b(id_btn, text) {
+function addActionBot1bY(id_btn, text) {
   bot.action('btn_B', async (ctx) => {
     try {
       await ctx.answerCbQuery()
@@ -301,6 +320,180 @@ bot.action('btn_B12', async (ctx) => {
       console.error(e)
     }
   })
+}
+// Раздел 3
+// Кредитование
+function addActionBotC(id_btn, text) {
+  bot.action('btn_C', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/loan.jpg' });
+      await ctx.replyWithHTML('<b>Кредитование под какие цели?</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Только под инвестиционные цели', 'btn_C1')],
+          [Markup.button.callback('На любые цели', 'btn_C2')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+// Кредитование под какие цели?
+// Только под инвестиционные цели. МСП Банк
+function addActionBotС1(id_btn, exports, preview) {
+  bot.action('btn_C1', async (ctx) => {
+   // ctx.deleteMessage();
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
+      await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
+        ))
+        } catch (e) {
+        console.error(e)
+      }
+    })
+// На любые цели. Банк Казани
+bot.action('btn_C2', async (ctx) => {
+  // ctx.deleteMessage();
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/loan2.jpg' });
+    await ctx.replyWithHTML(text.textC2, Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+}
+// Раздел 4
+// Промышленность
+// Уточни форму регистрации заявителя
+function addActionBot1b(id_btn, text) {
+  bot.action('btn_D', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/c3.jpg' });
+      await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('ООО', 'btn_00u')],
+          [Markup.button.callback('Физическое лицо/ИП', 'btn_01u')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+// ООО
+// Какой объем выручки у компании?
+  bot.action('btn_00u', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>Какой объем выручки у компании?</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Менее 30 млн', 'btn_D1u')],
+          [Markup.button.callback('Более 30 млн', 'btn_D2u')],
+          [Markup.button.callback('Более 800 млн', 'btn_D3u')]
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+// ФЛ/ИП
+  bot.action('btn_01u', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
+      await ctx.replyWithHTML('<b>Рекомендуется программа Старт</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Старт-1', 'btn_start')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+// Выберите особенности проекта
+// Менее 30 млн
+bot.action('btn_D1u', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Старт', 'btn_start')],
+        [Markup.button.callback('Акселерация', 'btn_axel')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
+
+// Более 30 млн
+bot.action('btn_D2u', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Разработка инновационной продукции', 'btn_d121')],
+        [Markup.button.callback('Расширение производства инновационной продукции', 'btn_d122')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
+// Разработка инновационной программы
+  bot.action('btn_d121', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Старт', 'btn_start')],
+          [Markup.button.callback('Развитие', 'btn_grow')],
+          [Markup.button.callback('Другое', 'btn_other2')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+// Расширение реализации инновационной продукции
+  bot.action('btn_d122', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Коммерциализация', 'btn_fsik')],
+          [Markup.button.callback('Другое', 'btn_other1')],]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+// Более 800 млн
+bot.action('btn_D3u', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Коммерциализация', 'btn_fsik')],
+        [Markup.button.callback('ФРП', 'btn_frp')],
+        [Markup.button.callback('Минпромторг', 'btn_mpt')],
+      ]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
 }
 // Старт
 function addActionBot0a(id_btn, exports, preview) {
@@ -588,6 +781,88 @@ function addActionBotGr(id_btn, exports, preview) {
           console.error(e)
         }})
 }
+// ФРП
+function addActionBot1d(id_btn, exports, preview) {
+  bot.action('btn_frp', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/frp.jpg' });
+      await ctx.replyWithHTML(text.textFrp, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_kom1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_kom2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_kom3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
+// МинПромТорг
+function addActionBot2d(id_btn, exports, preview) {
+  bot.action('btn_mpt', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/mpt.jpg' });
+      await ctx.replyWithHTML(text.textMrp, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_kom1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_kom2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_kom3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
 // РФРИТ
 function addActionBotRR(id_btn, exports, preview) {
   bot.action('btn_rfr', async (ctx) => {
@@ -596,7 +871,9 @@ function addActionBotRR(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/rfr.jpg' });
       await ctx.replyWithHTML('Меры поддержки', Markup.inlineKeyboard([
         [Markup.button.callback('Внедрение российских ИТ-решений','btn_rfr1')], [Markup.button.callback('Разработка отечественных ИТ-решений','btn_rfr2')],
-        [Markup.button.callback('Поддержка цифровизации МСП', 'btn_rfr3')]]
+        [Markup.button.callback('Поддержка цифровизации МСП', 'btn_rfr3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ]
       ))
       } catch (e) {
       console.error(e)
@@ -700,58 +977,6 @@ bot.action('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в ра�
 
 
 
-// Кредитование
-function addActionBotC(id_btn, text) {
-  bot.action('btn_C', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/loan.jpg' });
-      await ctx.replyWithHTML('<b>Кредитование под какие цели?</b>', Markup.inlineKeyboard(
-        [
-          [Markup.button.callback('Только под инвестиционные цели', 'btn_C1')],
-          [Markup.button.callback('На любые цели', 'btn_C2')],
-        ]
-      ))
-    } catch (e) {
-      console.error(e)
-    }
-  })}
-// Кредитование под какие цели?
-// Только под инвестиционные цели. МСП Банк
-function addActionBotС1(id_btn, exports, preview) {
-  bot.action('btn_C1', async (ctx) => {
-   // ctx.deleteMessage();
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
-      await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
-        [
-          [Markup.button.callback('Назад в меню выбора', 'go')],
-        ]
-      ))
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/loan1.pdf'})
-    } catch (e) {
-      console.error(e)
-    }
-})
-// На любые цели. Банк Казани
-bot.action('btn_C2', async (ctx) => {
-  // ctx.deleteMessage();
-  try {
-    await ctx.answerCbQuery()
-    await ctx.replyWithPhoto({ source: 'functions/bot/img/loan2.jpg' });
-    await ctx.replyWithHTML(text.textC2, Markup.inlineKeyboard(
-      [
-        [Markup.button.callback('Назад в меню выбора', 'go')],
-      ]
-    ))
-    await ctx.replyWithDocument( { source: ''})
-  } catch (e) {
-    console.error(e)
-  }
-})
-}
-
 
 
 
@@ -766,8 +991,9 @@ addActionBot1('btn_A22', text.textA12, true)
 addActionBot10c('btn_A3', text.textA3, true)
 addActionBot10c('btn_A41', text.textA41, true)
 // 2 раздел 
-addActionBot1b('btn_B1', text)
-addActionBot1b('btn_B2', text)
+addActionBot1bY('btn_B', text)
+addActionBot1bY('btn_B1', text)
+addActionBot1bY('btn_B2', text)
 addActionBot1b('btn_B11', text)
 addActionBot1b('btn_B12', text)
 addActionBot1b('btn_B111', text)
@@ -789,6 +1015,8 @@ addActionBotC('btn_С', text)
 addActionBotС1('btn_С1', text.textС1, true)
 addActionBotС1('btn_С2', text.textС2, true)
 // 4 раздел
+addActionBot1d('btn_frp', text.textFrp, true)
+addActionBot2d('btn_mpt', text.textMrp, true)
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)

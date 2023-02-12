@@ -6,47 +6,42 @@ const commands = `
 /faq - Частые вопросы`
 
 const text1 = `
-1. <u>Положение Старт-1</u> <a href="https://fasie.ru/upload/docs/%D0%9F%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A1%D1%82%D0%B0%D1%80%D1%82-1%202022.3_%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82.pdf">тык</a>
-
-2. Четверостишия
-
-Бычок
-
-Идет бычок, качается,
-Вздыхает на ходу:
-- Ох, доска кончается,
-Сейчас я упаду!
-
-Зайка
-
-Зайку бросила хозяйка -
-Под дождем остался зайка.
-Со скамейки слезть не мог,
-Весь до ниточки промок.
-
-Мишка
-
-Уронили мишку на пол,
-Оторвали мишке лапу.
-Все равно его не брошу -
-Потому что он хороший.`
+1. Вопрос. Текст.
+Ответ. Текст.
+`
 const textA11 = 
 `<b>Агропрогресс</b>
-<a href="https://drive.google.com/file/d/1HgVUojeoJJlFl9jWd7swPzItNUCt4mnD/view?usp=share_link">Агропрогресс. Краткая справка</a>`
+Описание: -
+Требования: -
+Условия: -
+`
 const textA12 = 
 `<b>Агротуризм</b> 
-<a href="https://drive.google.com/file/d/1tzQGZRVoQe0tuS0BGiK94nXuQ7OEa4XV/view?usp=share_link">Агротуризм.Презентация</a>`
+Описание: -
+Требования: -
+Условия: -
+`
 const textA21 = 
 `<b>Семейная животноводческая ферма</b> 
-    <a href="https://drive.google.com/file/d/1cT01lVlXsQXGLOk3tDUOgrYJ75zY9FjC/view?usp=share_link">СЖФ. Краткая справка</a>`
-    const textA41 = 
-    `<b>Рекомендуется программа Агростартап</b> 
-        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Агростартап. Краткая справка</a>`
+Описание: -
+Требования: -
+Условия: -
+`
+const textA41 = 
+`<b>Рекомендуется программа Агростартап</b> 
+Описание: -
+Требования: -
+Условия: -
+`
 const textA3 = 
-        `<b>Рекомендуется программа Развитие материально-технической базы</b> 
-    {        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
-    const textC1 = 
-    `Рекомендован кредит МСП банка
+`<b>Развитие материально-технической базы</b> 
+Описание: -
+Требования: -
+Условия: -
+`
+
+const textC1 = 
+`Рекомендован кредит МСП банка
 1. СЕМИЛЕТКА ДЛЯ БИЗНЕСА
 Сумма кредита до 10 млн рублей включительно
 Валюта рубли РФ
@@ -73,11 +68,14 @@ const textA3 =
 `
 const textC2 = 
 `<b>Рекомендован кредит Банка Казани</b> 
-{        <a href="https://drive.google.com/file/d/11VRGRQ8CJKHHp4OT93DD-q_M9RMaQb8r/view?usp=share_link">Развитие материально-технической базы</a>`
+Описание: -
+Требования: -
+Условия: -
+`
 
 // 2 раздел
 const textStart = 
-        `<b>Старт-1</b>
+`<b>Старт-1</b>
   Цель проекта проведение НИОКР, получение РИД.
 Размер гранта: до 4 млн руб.
 Внебюджетное софинансирование: не требуется
@@ -122,6 +120,19 @@ const textRfr3 =
 Конкурс временно закрыт
 `
 
+const textFrp = 
+    `<u>ФРП</u>
+Условия: 
+- Соответветствие коду ОКВЭД (10-33);
+- Займ под инвестиционные цели;
+
+`
+const textMrp = 
+        `<u>Минпромторг</u>
+Условия: 
+- Займ под любые цели;
+`
+
 module.exports.textA11 = textA11
 module.exports.textA12 = textA12
 module.exports.textA21 = textA21
@@ -139,3 +150,7 @@ module.exports.textGrow = textGrow
 module.exports.textRfr1 = textRfr1
 module.exports.textRfr2 = textRfr2
 module.exports.textRfr3 = textRfr3
+
+// 4 раздел
+module.exports.textFrp = textFrp
+module.exports.textMrp = textMrp

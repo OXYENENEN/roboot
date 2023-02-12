@@ -6,5 +6,18 @@ const textStart =
 Направление расходов: проведение НИОКР.
 Ожидаемые результаты: создана интеллектуальная собственность
     `
+const textFrp = 
+    `<u>ФРП</u>
+Условия: 
+- Соответветствие коду ОКВЭД (10-33);
+- Займ под инвестиционные цели;
 
-module.exports.textStart = textStart
+`
+const textMrp = 
+        `<u>Минпромторг</u>
+Условия: 
+- Займ под любые цели;
+`
+
+module.exports.textFrp = textFrp
+module.exports.textMrp = textMrp
