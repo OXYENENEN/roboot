@@ -1,4 +1,4 @@
-// IT
+// Промышленность
 // Уточни форму регистрации заявителя
 function addActionBot1b(id_btn, text) {
   bot.action('btn_B', async (ctx) => {
@@ -504,29 +504,5 @@ bot.command('btn_other1', async (ctx) => ctx.replyWithHTML('Раздел в ра
 bot.command('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
 // Обработчик функций
 addActionBot1b('btn_B1', text)
-addActionBot1b('btn_B2', text)
-addActionBot1b('btn_B11', text)
-addActionBot1b('btn_B12', text)
-addActionBot1b('btn_B111', text)
-addActionBot1b('btn_B112', text)
+
 addActionBot2b('btn_start', text.textStart, true)
-addActionBot2b('btn_fsik', text.textKom, true)
-addActionBot2b('btn_rfr1', text.textRfr1, true)
-addActionBot2b('btn_rfr2', text.textRfr2, true)
-addActionBot2b('btn_rfr3', text.textRfr2, true)
-addActionBot2b('btn_grow', text.textGrow, true)
-
-btn_grow
-btn_other2
-btn_fsik
-btn_fsikdt
-btn_fsikii
-btn_rfr
-btn_other1
-btn_kom1
-btn_kom2
-btn_kom3
-
-
-btn_ba1
-btn_ba2
