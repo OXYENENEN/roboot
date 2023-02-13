@@ -8,7 +8,7 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go</a>`));
+bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go. Для навигации по программам ФСИ нажмите /fsie. Нажмите /faq с ответами на частые вопросы.</a>`));
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 // bot.on('message', (msg) => {
