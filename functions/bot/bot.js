@@ -253,8 +253,8 @@ function addActionBot1bY(id_btn, text) {
           [Markup.button.callback('Старт-1', 'btn_start')],
           [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
           [Markup.button.callback('Старт-ИИ', 'btn_startI')],
-          [Markup.button.callback('Акселерация', 'btn_axel')]
-        ]
+          [Markup.button.callback('Акселерация', 'btn_axel')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -284,8 +284,8 @@ bot.action('btn_B12', async (ctx) => {
             [Markup.button.callback('Старт-1', 'btn_start')],
             [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
             [Markup.button.callback('Старт-ИИ', 'btn_startI')],
-            [Markup.button.callback('Акселерация', 'btn_axel')]
-        ]
+            [Markup.button.callback('Акселерация', 'btn_axel')],
+            [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -299,6 +299,7 @@ bot.action('btn_B12', async (ctx) => {
         [
           [Markup.button.callback('Развитие', 'btn_grow')],
           [Markup.button.callback('Другое', 'btn_other2')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]
         ]
       ))
     } catch (e) {
@@ -314,7 +315,8 @@ bot.action('btn_B12', async (ctx) => {
           Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt'),
           Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
           [Markup.button.callback('РФРИТ', 'btn_rfr'), 
-          Markup.button.callback('Другое', 'btn_other1')]]
+          Markup.button.callback('Другое', 'btn_other1')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -415,7 +417,7 @@ function addActionBot1b(id_btn, text) {
       await ctx.replyWithHTML('<b>Рекомендуется программа Старт</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт-1', 'btn_start')],
-        ]
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -430,7 +432,7 @@ bot.action('btn_D1u', async (ctx) => {
       [
         [Markup.button.callback('Старт', 'btn_start')],
         [Markup.button.callback('Акселерация', 'btn_axel')],
-      ]
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
     ))
   } catch (e) {
     console.error(e)
@@ -460,7 +462,7 @@ bot.action('btn_D2u', async (ctx) => {
           [Markup.button.callback('Старт', 'btn_start')],
           [Markup.button.callback('Развитие', 'btn_grow')],
           [Markup.button.callback('Другое', 'btn_other2')],
-        ]
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -473,7 +475,8 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Коммерциализация', 'btn_fsik')],
-          [Markup.button.callback('Другое', 'btn_other1')],]
+          [Markup.button.callback('Другое', 'btn_other1')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
       console.error(e)
@@ -488,6 +491,7 @@ bot.action('btn_D3u', async (ctx) => {
         [Markup.button.callback('Коммерциализация', 'btn_fsik')],
         [Markup.button.callback('ФРП', 'btn_frp')],
         [Markup.button.callback('Минпромторг', 'btn_mpt')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
       ]
     ))
   } catch (e) {
