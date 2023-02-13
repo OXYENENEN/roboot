@@ -70,7 +70,7 @@ function addActionBot27(id_btn, text) {
       try {
         await ctx.answerCbQuery()
         await ctx.replyWithPhoto({ source: 'functions/bot/img/agro1.jpg' });
- await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
+ await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
           [
             [Markup.button.callback('ООО', 'btn_A1')],
             [Markup.button.callback('ИП/КФХ', 'btn_A2')],
@@ -218,7 +218,7 @@ function addActionBot1bY(id_btn, text) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/dt.jpg' });
-      await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('ООО', 'btn_B1')],
           [Markup.button.callback('Физическое лицо/ИП', 'btn_B2')],
@@ -383,7 +383,7 @@ function addActionBot1b(id_btn, text) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/c3.jpg' });
-      await ctx.replyWithHTML('<b>Уточни форму регистрации заявителя</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('ООО', 'btn_00u')],
           [Markup.button.callback('Физическое лицо/ИП', 'btn_01u')],
