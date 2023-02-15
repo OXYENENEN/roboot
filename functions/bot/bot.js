@@ -8,7 +8,7 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => { ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Начинаем подбор грантовой программы. 
+bot.start((ctx) =>  { ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Начинаем подбор грантовой программы. 
 Для навигации воспользуйтесь Меню.`);
 sendStartMessage(ctx);});
 bot.help((ctx) => ctx.reply(text.commands));
@@ -259,8 +259,8 @@ function addActionBot1bY(id_btn, text) {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Как долго зарегистрировано ЮЛ?</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Больше года', 'btn_B11')],
-          [Markup.button.callback('Меньше года', 'btn_B12')],
+          [Markup.button.callback('Больше 2 лет', 'btn_B11')],
+          [Markup.button.callback('Меньше 2 лет', 'btn_B12')],
         ]
       ))
     } catch (e) {
@@ -291,7 +291,7 @@ function addActionBot1bY(id_btn, text) {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Разработка и освоение производство нового товара (НИОКР)', 'btn_B111')],
+          [Markup.button.callback('Разработка и освоение производства нового товара (НИОКР)', 'btn_B111')],
           [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_B112')],
         ]
       ))
@@ -440,7 +440,7 @@ function addActionBot1b(id_btn, text) {
         [
           [Markup.button.callback('Менее 30 млн', 'btn_D1u')],
           [Markup.button.callback('Более 30 млн', 'btn_D2u')],
-          [Markup.button.callback('Более 800 млн', 'btn_D3u')]
+          [Markup.button.callback('Более 300 млн', 'btn_D3u')]
         ]
       ))
     } catch (e) {
@@ -483,8 +483,8 @@ bot.action('btn_D2u', async (ctx) => {
     await ctx.answerCbQuery()
     await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
       [
-        [Markup.button.callback('Разработка инновационной продукции', 'btn_d121')],
-        [Markup.button.callback('Расширение производства инновационной продукции', 'btn_d122')],
+        [Markup.button.callback('Разработка и освоение производства нового товара (НИОКР)', 'btn_d121')],
+        [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_d122')],
       ]
     ))
   } catch (e) {
@@ -520,7 +520,7 @@ bot.action('btn_D2u', async (ctx) => {
       console.error(e)
     }
   })
-// Более 800 млн
+// Более 300 млн
 bot.action('btn_D3u', async (ctx) => {
   try {
     await ctx.answerCbQuery()
