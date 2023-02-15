@@ -8,8 +8,8 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => { ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go. 
-Для навигации по программам ФСИ нажмите /fsie.</a>`);
+bot.start((ctx) => { ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Начинаем подбор грантовой программы. 
+Для навигации воспользуйтесь Меню.`);
 sendStartMessage(ctx);});
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
@@ -103,7 +103,7 @@ function addActionBot1a(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/grant-agroprogress.jpg' });
       await ctx.replyWithHTML(text.textA11, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Краткая справка','btn_AgroP1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Краткая справка','btn_AgroP1'), Markup.button.callback('Анкета клиента','btn_kom2')],
           [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -140,7 +140,7 @@ function addActionBot1(id_btn, exports, preview) {
           await ctx.replyWithPhoto({ source: 'functions/bot/img/semfarm.jpg' });
           await ctx.replyWithHTML(text.textA21, Markup.inlineKeyboard(
             [
-              [Markup.button.callback('Краткая справка по проекту','btn_SFarm1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+              [Markup.button.callback('Краткая справка по проекту','btn_SFarm1'), Markup.button.callback('Анкета клиента','btn_kom2')],
               [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
               [Markup.button.callback('Назад в меню выбора', 'go')]]
             ))
@@ -162,7 +162,7 @@ bot.action('btn_A22', async (ctx) => {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
       await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Презентация','btn_AgroT1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Презентация','btn_AgroT1'), Markup.button.callback('Анкета клиента','btn_kom2')],
           [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -191,7 +191,7 @@ function addActionBot10c(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agro_razv.jpg' });
       await ctx.replyWithHTML(text.textA3, Markup.inlineKeyboard([
-        [Markup.button.callback('Памятка для кооперативов','btn_Rmtb')], [Markup.button.callback('Анкета клиенту','btn_D2')],
+        [Markup.button.callback('Памятка для кооперативов','btn_Rmtb')], [Markup.button.callback('Анкета клиента','btn_D2')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ]))
       } catch (e) {
@@ -292,7 +292,7 @@ function addActionBot1bY(id_btn, text) {
       await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Разработка и освоение производство нового товара (НИОКР)', 'btn_B111')],
-          [Markup.button.callback('Cоздание/расширение производства инновационной продукции', 'btn_B112')],
+          [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_B112')],
         ]
       ))
     } catch (e) {
@@ -374,7 +374,7 @@ function addActionBotС1(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
       await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Программы кредитования','btn_msp1')], [Markup.button.callback('Анкета клиенту','btn_kom2'),
+          [Markup.button.callback('Программы кредитования','btn_msp1')], [Markup.button.callback('Анкета клиента','btn_kom2'),
           Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -392,20 +392,26 @@ function addActionBotС1(id_btn, exports, preview) {
      
 // На любые цели. Банк Казани
 bot.action('btn_C2', async (ctx) => {
-  // ctx.deleteMessage();
+ctx.deleteMessage();
   try {
     await ctx.answerCbQuery()
     await ctx.replyWithPhoto({ source: 'functions/bot/img/loan2.jpg' });
     await ctx.replyWithHTML(text.textC2, Markup.inlineKeyboard(
       [
-        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Документы на запрос','btn_bk1')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
       } catch (e) {
       console.error(e)
-    }
-  })
+    }})
+  bot.action('btn_bk1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Документы на запрос Банк Казани.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+  
 }
 // Раздел 4
 // Промышленность
@@ -537,7 +543,7 @@ function addActionBot0a(id_btn, exports, preview) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([[Markup.button.callback('Положение по конкурсу','btn_start1'), Markup.button.callback('Анкета клиенту','btn_start2')],
+      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([[Markup.button.callback('Положение по конкурсу','btn_start1'), Markup.button.callback('Анкета клиента','btn_start2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -577,7 +583,7 @@ function addActionBot0b(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
       await ctx.replyWithHTML(text.textStartdt, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_startdt1'), Markup.button.callback('Анкета клиенту','btn_startdt2')],
+        [Markup.button.callback('Положение по конкурсу','btn_startdt1'), Markup.button.callback('Анкета клиента','btn_startdt2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -617,7 +623,7 @@ function addActionBot0c(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
       await ctx.replyWithHTML(text.textStarti, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_starti1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
+        [Markup.button.callback('Положение по конкурсу','btn_starti1')], [Markup.button.callback('Анкета клиента','btn_start2')]],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ))
@@ -661,7 +667,7 @@ function addActionBot0k1(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
       await ctx.replyWithHTML(text.textKom, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиента','btn_kom2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -701,8 +707,8 @@ function addActionBot0k2(id_btn, exports, preview) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
-      await ctx.replyWithHTML(text.textKom, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+      await ctx.replyWithHTML(text.textKomdt, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_komdt'), Markup.button.callback('Анкета клиента','btn_kom2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -710,10 +716,10 @@ function addActionBot0k2(id_btn, exports, preview) {
       console.error(e)
     }
   })
-  bot.action('btn_kom1', async (ctx) => {
+  bot.action('btn_komdt', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Pol_Komm-dt.pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -742,8 +748,8 @@ function addActionBot0k3(id_btn, exports, preview) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
-      await ctx.replyWithHTML(text.textKom, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+      await ctx.replyWithHTML(text.textKomi, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1i'), Markup.button.callback('Анкета клиента','btn_kom2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -751,10 +757,10 @@ function addActionBot0k3(id_btn, exports, preview) {
       console.error(e)
     }
   })
-  bot.action('btn_kom1', async (ctx) => {
+  bot.action('btn_kom1i', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Коммерциализация-ИИ (очередь VI).pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -784,7 +790,7 @@ function addActionBotGr(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/grow.jpg' });
       await ctx.replyWithHTML(text.textGrow, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_gr1'), Markup.button.callback('Анкета клиенту','btn_gr2'),
+        [Markup.button.callback('Положение по конкурсу','btn_gr1'), Markup.button.callback('Анкета клиента','btn_gr2'),
         Markup.button.callback('Перечень файлов на запрос', 'btn_gr3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -795,7 +801,7 @@ function addActionBotGr(id_btn, exports, preview) {
   bot.action('btn_gr1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Развитие-НТИ (проекты-маяки) (очередь III)_на сайт.pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -809,7 +815,7 @@ function addActionBotGr(id_btn, exports, preview) {
       bot.action('btn_gr3', async (ctx) => {
         try {
           await ctx.answerCbQuery()
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/1_Дорожная_карта_Развитие.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
@@ -825,39 +831,27 @@ function addActionBot1d(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/frp.jpg' });
       await ctx.replyWithHTML(text.textFrp, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
-        [Markup.button.callback('Назад в меню выбора', 'go')]
+        [Markup.button.callback('Памятка','btn_frp1'), Markup.button.callback('Анкета клиента','btn_frp2')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
       } catch (e) {
       console.error(e)
     }
   })
-  bot.action('btn_kom1', async (ctx) => {
+  bot.action('btn_frp1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение_Коммерциализация_18_на_сайт.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/ФРП условия краткие.pdf'})
     } catch (e) {
       console.error(e)
     }})
-    bot.action('btn_kom2', async (ctx) => {
+    bot.action('btn_frp2', async (ctx) => {
       try {
         await ctx.answerCbQuery()
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета по ФРП.xlsx'})
       } catch (e) {
         console.error(e)
       }})
-      bot.action('btn_kom3', async (ctx) => {
-        try {
-          await ctx.answerCbQuery()
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
-        } catch (e) {
-          console.error(e)
-        }})
 }
 // МинПромТорг
 function addActionBot2d(id_btn, exports, preview) {
@@ -866,7 +860,7 @@ function addActionBot2d(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/mpt.jpg' });
       await ctx.replyWithHTML(text.textMrp, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиенту','btn_kom2')]],
+        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиента','btn_kom2')]],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ))
@@ -922,7 +916,7 @@ function addActionBotRR(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/rfr.jpg' });
       await ctx.replyWithHTML(text.textRfr1, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_rfrA'), Markup.button.callback('Анкета клиенту','btn_rfrB')],
+        [Markup.button.callback('Положение по конкурсу','btn_rfrA'), Markup.button.callback('Анкета клиента','btn_rfrB')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_rfrC')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -961,7 +955,7 @@ bot.action('btn_rfr2', async (ctx) => {
     await ctx.answerCbQuery()
     await ctx.replyWithPhoto({ source: 'functions/bot/img/rfr.jpg' });
     await ctx.replyWithHTML(text.textRfr2, Markup.inlineKeyboard([
-      [Markup.button.callback('Положение по конкурсу','btn_rfrD'), Markup.button.callback('Анкета клиенту','btn_rfrE')],
+      [Markup.button.callback('Положение по конкурсу','btn_rfrD'), Markup.button.callback('Анкета клиента','btn_rfrE')],
       [Markup.button.callback('Перечень файлов на запрос', 'btn_rfrF')],
       [Markup.button.callback('Назад в меню выбора', 'go')]]
     ))
