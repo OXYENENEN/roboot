@@ -8,9 +8,9 @@ Markup
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-bot.start((ctx) => ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go. 
-Для навигации по программам ФСИ нажмите /fsie. 
-Нажмите /faq для получения ответов на частые вопросы.</a>`));
+bot.start((ctx) => { ctx.replyWithHTML(`Привет ${ctx.message.from.first_name ? ctx.message.from.first_name : 'незнакомец'}! Для подбора программы <a href="/go">нажмите /go. 
+Для навигации по программам ФСИ нажмите /fsie.</a>`);
+sendStartMessage(ctx);});
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
 // bot.on('message', (msg) => {
@@ -26,15 +26,14 @@ bot.command('fsie', async (ctx) => {
         await ctx.replyWithPhoto({ source: 'functions/bot/img/1.png' });
         await ctx.replyWithHTML('<b>Гранты ФСИ</b>', Markup.inlineKeyboard(
           [
-            [Markup.button.callback('Старт-1', 'btn_start'),
-            Markup.button.callback('Старт-ЦТ', 'btn_startdt'),
-            Markup.button.callback('Старт-ИИ', 'btn_startI')],
+            [Markup.button.callback('Старт-1', 'btn_start')],
+            [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
+            [Markup.button.callback('Старт-ИИ', 'btn_starti')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
             [Markup.button.callback('Развитие', 'btn_grow')],
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
             [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
-            [Markup.button.callback('РФРИТ', 'btn_rfr')], 
             [Markup.button.callback('Другое', 'btn_other2')]
           ]
         ))
@@ -89,7 +88,7 @@ bot.action('btn_A1', async (ctx) => {
           try {
             await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
               [
-                [Markup.button.callback('Агропрогресс', 'btn_A11'), Markup.button.callback('Агротуризм', 'btn_A12')]
+                [Markup.button.callback('Агропрогресс', 'btn_A11'), Markup.button.callback('Агротуризм', 'btn_A22')]
               ]
             ))
           } catch (e) {
@@ -104,7 +103,7 @@ function addActionBot1a(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/grant-agroprogress.jpg' });
       await ctx.replyWithHTML(text.textA11, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Краткая справка','btn_AgroP1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
           [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -112,21 +111,14 @@ function addActionBot1a(id_btn, exports, preview) {
         console.error(e)
       }
     })
-// Агротуризм
-bot.action('btn_A12', async (ctx) => {
-try {
-  await ctx.answerCbQuery()
-  await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
-  await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
-    [
-      [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
-      [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
-      [Markup.button.callback('Назад в меню выбора', 'go')]]
-    ))
-    } catch (e) {
-    console.error(e)
-  }
-})}
+    bot.action('btn_AgroP1', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Краткая_спрвка_Агропрогресс_2021_1.pdf'})
+      } catch (e) {
+        console.error(e)
+      }})
+}
 function addActionBot2(id_btn, text) {
   bot.action('btn_A2', async (ctx) => {
     try {
@@ -148,7 +140,7 @@ function addActionBot1(id_btn, exports, preview) {
           await ctx.replyWithPhoto({ source: 'functions/bot/img/semfarm.jpg' });
           await ctx.replyWithHTML(text.textA21, Markup.inlineKeyboard(
             [
-              [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+              [Markup.button.callback('Краткая справка по проекту','btn_SFarm1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
               [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
               [Markup.button.callback('Назад в меню выбора', 'go')]]
             ))
@@ -156,6 +148,13 @@ function addActionBot1(id_btn, exports, preview) {
             console.error(e)
           }
         })
+        bot.action('btn_SFarm1', async (ctx) => {
+          try {
+            await ctx.answerCbQuery()
+            await ctx.replyWithDocument( { source: 'functions/bot/docs/СЖФ 2021 Краткая справка (1) (1).pdf'})
+          } catch (e) {
+            console.error(e)
+          }})
 // Агротуризм
 bot.action('btn_A22', async (ctx) => {
     try {
@@ -163,7 +162,7 @@ bot.action('btn_A22', async (ctx) => {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
       await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
+          [Markup.button.callback('Презентация','btn_AgroT1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
           [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -171,13 +170,28 @@ bot.action('btn_A22', async (ctx) => {
         console.error(e)
       }
     })}
+    bot.action('btn_AgroT1', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Агротуризм през.pdf'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_D2', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/agr.pdf'})
+        } catch (e) {
+          console.error(e)
+        }})
+// Развитие материально-технической базы
 function addActionBot10c(id_btn, exports, preview) {
   bot.action('btn_A3', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agro_razv.jpg' });
-      await ctx.replyWithHTML(`Рекомендуется программа Развитие материально-технической базы`, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_D1')], [Markup.button.callback('Анкета клиенту','btn_D2')],
+      await ctx.replyWithHTML(text.textA3, Markup.inlineKeyboard([
+        [Markup.button.callback('Памятка для кооперативов','btn_Rmtb')], [Markup.button.callback('Анкета клиенту','btn_D2')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ]))
       } catch (e) {
@@ -185,10 +199,10 @@ function addActionBot10c(id_btn, exports, preview) {
     }
   })
 
-  bot.action('btn_D1', async (ctx) => {
+  bot.action('btn_Rmtb', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Развитие МТБ кооперативов.pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -199,19 +213,27 @@ function addActionBot10c(id_btn, exports, preview) {
       } catch (e) {
         console.error(e)
       }})
-
+// Агростартап
     bot.action('btn_A41', async (ctx) => {
       try {
         await ctx.answerCbQuery()
         await ctx.replyWithPhoto({ source: 'functions/bot/img/agrostartap.jpg' });
         await ctx.replyWithHTML(text.textA41, Markup.inlineKeyboard(
           [
-            [Markup.button.callback('Назад в меню выбора', 'go')],
+            [Markup.button.callback('Краткая справка','btn_AgroS')],
+            [Markup.button.callback('Назад в меню выбора', 'go')]
           ]
         ))
       } catch (e) {
         console.error(e)
       }})}
+      bot.action('btn_AgroS', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Агростартап_2021_Краткая_справка.pdf'})
+        } catch (e) {
+          console.error(e)
+        }})
 // Раздел 2
 // IT
 // Уточни форму регистрации заявителя
@@ -254,7 +276,7 @@ function addActionBot1bY(id_btn, text) {
         [
           [Markup.button.callback('Старт-1', 'btn_start')],
           [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
-          [Markup.button.callback('Старт-ИИ', 'btn_startI')],
+          [Markup.button.callback('Старт-ИИ', 'btn_starti')],
           [Markup.button.callback('Акселерация', 'btn_axel')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -269,8 +291,8 @@ function addActionBot1bY(id_btn, text) {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Разработка инновационной продукции', 'btn_B111')],
-          [Markup.button.callback('Расширение реализации инновационной продукции', 'btn_B112')],
+          [Markup.button.callback('Разработка и освоение производство нового товара (НИОКР)', 'btn_B111')],
+          [Markup.button.callback('Cоздание/расширение производства инновационной продукции', 'btn_B112')],
         ]
       ))
     } catch (e) {
@@ -285,7 +307,7 @@ bot.action('btn_B12', async (ctx) => {
         [
             [Markup.button.callback('Старт-1', 'btn_start')],
             [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
-            [Markup.button.callback('Старт-ИИ', 'btn_startI')],
+            [Markup.button.callback('Старт-ИИ', 'btn_starti')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
             [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -313,9 +335,9 @@ bot.action('btn_B12', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
-                [[Markup.button.callback('Коммерциализация', 'btn_fsik'),
-          Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt'),
-          Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
+                [[Markup.button.callback('Коммерциализация', 'btn_fsik')],
+          [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
+          [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
           [Markup.button.callback('РФРИТ', 'btn_rfr'), 
           Markup.button.callback('Другое', 'btn_other1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
@@ -352,14 +374,22 @@ function addActionBotС1(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
       await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Положение по конкурсу','btn_kom1'), Markup.button.callback('Анкета клиенту','btn_kom2')],
-          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Программы кредитования','btn_msp1')], [Markup.button.callback('Анкета клиенту','btn_kom2'),
+          Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
         } catch (e) {
         console.error(e)
       }
     })
+    bot.action('btn_msp1', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Программы МСП Банка.pdf'})
+      } catch (e) {
+        console.error(e)
+      }})
+     
 // На любые цели. Банк Казани
 bot.action('btn_C2', async (ctx) => {
   // ctx.deleteMessage();
@@ -546,8 +576,8 @@ function addActionBot0b(id_btn, exports, preview) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_start1'), Markup.button.callback('Анкета клиенту','btn_start2')],
+      await ctx.replyWithHTML(text.textStartdt, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_startdt1'), Markup.button.callback('Анкета клиенту','btn_startdt2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -559,7 +589,7 @@ function addActionBot0b(id_btn, exports, preview) {
   bot.action('btn_start1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Старт-ЦТ-1 (очередь V)_на сайт.pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -582,12 +612,12 @@ function addActionBot0b(id_btn, exports, preview) {
 }
 // Старт-ИИ
 function addActionBot0c(id_btn, exports, preview) {
-  bot.action('btn_startii', async (ctx) => {
+  bot.action('btn_starti', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML(text.textStart, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_start1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
+      await ctx.replyWithHTML(text.textStarti, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_starti1')], [Markup.button.callback('Анкета клиенту','btn_start2')]],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ))
@@ -596,10 +626,10 @@ function addActionBot0c(id_btn, exports, preview) {
     }
   })
 
-  bot.action('btn_start1', async (ctx) => {
+  bot.action('btn_starti1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/pole_start1.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Старт-ИИ (очередь VII).pdf'})
     } catch (e) {
       console.error(e)
     }})
@@ -621,7 +651,8 @@ function addActionBot0c(id_btn, exports, preview) {
         }})
 }
 // Акселерация
-bot.action('btn_axel', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
+bot.action('btn_axel', async (ctx) => ctx.replyWithHTML('Раздел в разработке', Markup.inlineKeyboard(
+  [Markup.button.callback('Назад в меню выбора', 'go')])));
 
 // Коммерциализация
 function addActionBot0k1(id_btn, exports, preview) {
@@ -977,10 +1008,12 @@ bot.action('btn_rfr3', async (ctx) => {
 })
 }
 // Другое1
-bot.action('btn_other1', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
-// Другое2
-bot.action('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в разработке'));
+bot.action('btn_other1', async (ctx) => ctx.replyWithHTML('Раздел в разработке', Markup.inlineKeyboard(
+  [Markup.button.callback('Назад в меню выбора', 'go')])));
 
+// Другое2
+bot.action('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в разработке', Markup.inlineKeyboard(
+  [Markup.button.callback('Назад в меню выбора', 'go')])));
 
 
 
@@ -991,11 +1024,11 @@ addActionBot27('btn_A', text)
 addActionBot23('btn_A1', text)
 addActionBot2('btn_A2', text)
 addActionBot1a('btn_A11', text.textA11, true)
-addActionBot1a('btn_A12', text.textA12, true)
 addActionBot1('btn_A21', text.textA21, true)
 addActionBot1('btn_A22', text.textA12, true)
 addActionBot10c('btn_A3', text.textA3, true)
 addActionBot10c('btn_A41', text.textA41, true)
+
 // 2 раздел 
 addActionBot1bY('btn_B', text)
 addActionBot1bY('btn_B1', text)
@@ -1006,8 +1039,8 @@ addActionBot1b('btn_B111', text)
 addActionBot1b('btn_B112', text)
 addActionBot0a('btn_start', text, true)
 addActionBot0a('btn_start1', text.textStart, true)
-addActionBot0b('btn_startdt', text.textStart, true)
-addActionBot0c('btn_startii', text.textStart, true)
+addActionBot0b('btn_startdt', text.textStartdt, true)
+addActionBot0c('btn_starti', text.textStarti, true)
 addActionBot0k1('btn_fsik', text.textKom, true)
 addActionBot0k2('btn_fsikdt', text.textKom, true)
 addActionBot0k3('btn_fsikii', text.textKom, true)
