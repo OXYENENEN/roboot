@@ -992,8 +992,8 @@ bot.action('btn_rfrD', async (ctx) => {
 bot.action('btn_rfr3', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
-    await ctx.replyWithHTML(text.textKom3, Markup.inlineKeyboard(
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/rfr.jpg' });
+    await ctx.replyWithHTML('В настоящее время конкурс по данной программе не открыт. Ожидайте информации.', Markup.inlineKeyboard(
      [Markup.button.callback('Назад в меню выбора', 'go')]
     ))
     } catch (e) {
