@@ -13,7 +13,6 @@ bot.start((ctx) =>  { ctx.replyWithHTML(`Привет ${ctx.message.from.first_n
 sendStartMessage(ctx);});
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
-bot.on('text', (ctx) => ctx.reply('😅'));
 // bot.on('message', (msg) => {
  // const chatId = msg.chat.id;
 
@@ -1011,7 +1010,7 @@ bot.action('btn_other2', async (ctx) => ctx.replyWithHTML('Раздел в ра�
   [Markup.button.callback('Назад в меню выбора', 'go')])));
 
 
-
+  bot.on('text', (ctx) => ctx.reply('😅'));
 
 
 // Обработчик функций
