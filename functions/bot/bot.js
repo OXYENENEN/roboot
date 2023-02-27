@@ -13,6 +13,7 @@ bot.start((ctx) =>  { ctx.replyWithHTML(`Привет ${ctx.message.from.first_n
 sendStartMessage(ctx);});
 bot.help((ctx) => ctx.reply(text.commands));
 bot.on('sticker', (ctx) => ctx.reply('👍'));
+bot.on('text', (ctx) => ctx.reply('😅'));
 // bot.on('message', (msg) => {
  // const chatId = msg.chat.id;
 
