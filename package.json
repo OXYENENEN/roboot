@@ -4,7 +4,7 @@
   "description": "",
   "main": "functions/bot/bot.js",
   "scripts": {
-    "build": "node functions/bot/bot.js",
+    "start": "node functions/bot/bot.js",
     "dev": "nodemon functions/bot/bot.js"
   },
   "keywords": [],
