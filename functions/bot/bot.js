@@ -840,7 +840,7 @@ bot.action('btn_grow2', async (ctx) => {
 bot.action('btn_grd1', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Развитие-НТИ (проекты-маяки) (очередь III)_на сайт.pdf'})
+    await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Развитие-ЦТ (очередь V)_на сайт.pdf'})
   } catch (e) {
     console.error(e)
   }})
