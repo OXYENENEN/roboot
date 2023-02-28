@@ -322,7 +322,7 @@ bot.action('btn_B12', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
-          [Markup.button.callback('Развитие-ЦТ', 'btn_grow')],
+          [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
           [Markup.button.callback('Назад в меню выбора', 'go')]
         ]
       ))
@@ -823,6 +823,45 @@ function addActionBotGr(id_btn, exports, preview) {
         } catch (e) {
           console.error(e)
         }})
+// Развитие-ЦТ
+bot.action('btn_grow2', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/grow.jpg' });
+    await ctx.replyWithHTML(text.textGrow2, Markup.inlineKeyboard([
+      [Markup.button.callback('Положение по конкурсу','btn_grd1'), Markup.button.callback('Анкета клиента','btn_grd2'),
+      Markup.button.callback('Перечень файлов на запрос', 'btn_grd3')],
+      [Markup.button.callback('Назад в меню выбора', 'go')]]
+    ))
+    } catch (e) {
+    console.error(e)
+  }
+})
+bot.action('btn_grd1', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Развитие-НТИ (проекты-маяки) (очередь III)_на сайт.pdf'})
+  } catch (e) {
+    console.error(e)
+  }})
+  bot.action('btn_grd2', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_grd3', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/1_Дорожная_карта_Развитие.docx'}),
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+      } catch (e) {
+        console.error(e)
+      }})
 }
 // ФРП
 function addActionBot1d(id_btn, exports, preview) {
@@ -1043,6 +1082,7 @@ addActionBotRR('btn_rfr1', text.textRfr1, true)
 addActionBotRR('btn_rfr2', text.textRfr2, true)
 addActionBotRR('btn_rfr3', text.textRfr2, true)
 addActionBotGr('btn_grow', text.textGrow, true)
+addActionBotGr('btn_grow2', text.textGrow2, true)
 // 3 раздел
 addActionBotC('btn_С', text)
 addActionBotС1('btn_С1', text.textС1, true)
