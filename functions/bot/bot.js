@@ -59,11 +59,13 @@ function sendStartMessage(ctx){
         [Markup.button.callback('Промышленность', 'btn_D')]
       ]
     ))
-ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
+    ctx.replyWithPhoto({ source: 'functions/bot/img/977448.jpg'});
+    ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
       [
         Markup.button.url('Обзор', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
       ]
-))
+)
+)
   } catch (e) {
     console.error(e)
   }
