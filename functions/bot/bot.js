@@ -61,24 +61,14 @@ function sendStartMessage(ctx){
     ))
 ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
       [
-        [Markup.button.callback('Ссылка на файл', 'btn_inf')]
+        Markup.button.url('Обзор', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
       ]
 ))
   } catch (e) {
     console.error(e)
   }
 }
-function addActionBotINF(id_btn, exports, preview) {
-  bot.action('btn_inf', async (ctx) => {
-    try {
-      await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/977448.png' });
-      await ctx.replyWithHTML('https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852',
-      )
-      } catch (e) {
-      console.error(e)
-    }
-  })}
+
 
 // Раздел 1 
 // Сельхоз
