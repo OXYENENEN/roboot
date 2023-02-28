@@ -30,7 +30,7 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
             [Markup.button.callback('Старт-ИИ', 'btn_starti')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
-            [Markup.button.callback('Развитие', 'btn_grow')],
+            [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
             [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
@@ -291,7 +291,7 @@ function addActionBot1bY(id_btn, text) {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Разработка и освоение производства нового товара (НИОКР)', 'btn_B111')],
+          [Markup.button.callback('Разработка инновационного продукта', 'btn_B111')],
           [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_B112')],
         ]
       ))
@@ -321,8 +321,8 @@ bot.action('btn_B12', async (ctx) => {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Развитие', 'btn_grow')],
-          [Markup.button.callback('Другое', 'btn_other2')],
+          [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
+          [Markup.button.callback('Развитие-ЦТ', 'btn_grow')],
           [Markup.button.callback('Назад в меню выбора', 'go')]
         ]
       ))
@@ -498,7 +498,7 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт', 'btn_start')],
-          [Markup.button.callback('Развитие', 'btn_grow')],
+          [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
           [Markup.button.callback('Другое', 'btn_other2')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
