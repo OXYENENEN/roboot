@@ -1089,7 +1089,6 @@ addActionBotRR('btn_rfr2', text.textRfr2, true)
 addActionBotRR('btn_rfr3', text.textRfr2, true)
 addActionBotGr('btn_grow', text.textGrow, true)
 addActionBotGr('btn_grow2', text.textGrow2, true)
-addActionBotINF(btn_inf, text, true)
 // 3 раздел
 addActionBotC('btn_С', text)
 addActionBotС1('btn_С1', text.textС1, true)
