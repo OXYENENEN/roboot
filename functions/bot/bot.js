@@ -29,8 +29,10 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Старт-1', 'btn_start')],
             [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
             [Markup.button.callback('Старт-ИИ', 'btn_starti')],
+            [Markup.button.callback('Старт-2', 'btn_start2')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
             [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
+            [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
             [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
@@ -40,6 +42,8 @@ bot.command('fsie', async (ctx) => {
       } catch (e) {
         console.error(e) }
 })
+
+// Справка по программам
 bot.command('guide', async (ctx) => {
   try {
     await ctx.replyWithPhoto({ source: 'functions/bot/img/977448.jpg' });
@@ -53,6 +57,31 @@ bot.command('guide', async (ctx) => {
     console.error(e)
   }
 })
+
+// Все программы
+bot.command('info', async (ctx) => {
+  try {
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/977448.jpg' });
+    await ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
+      [
+        Markup.button.url('ФСИ', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
+      ],
+      [
+        Markup.button.url('РФРИТ', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
+      ],
+      [
+        Markup.button.url('ФРП', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
+      ],
+      [
+        Markup.button.url('Фонд Науки МОН РК', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
+      ]
+)
+)    
+  } catch (e) {
+    console.error(e)
+  }
+})
+
 // Подбор программы
 bot.command('go', async (ctx) => {
   sendStartMessage(ctx);
@@ -669,6 +698,48 @@ function addActionBot0c(id_btn, exports, preview) {
           console.error(e)
         }})
 }
+
+// Старт-2
+function addActionBot0c(id_btn, exports, preview) {
+  bot.action('btn_start2', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
+      await ctx.replyWithHTML(text.textStart2, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_starti1')], [Markup.button.callback('Анкета клиента','btn_start2')]],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_start3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+
+  bot.action('btn_start2_1', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Старт-2 2021.1_на сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_start2_2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Старт-1.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_start2_3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/02_Информация для ТЗ.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/03_Запрос_маркетинг.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проекта.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
+
 // Акселерация
 bot.action('btn_axel', async (ctx) => ctx.replyWithHTML('Раздел в разработке', Markup.inlineKeyboard(
   [Markup.button.callback('Назад в меню выбора', 'go')])));
@@ -1087,6 +1158,7 @@ addActionBot0a('btn_start', text, true)
 addActionBot0a('btn_start1', text.textStart, true)
 addActionBot0b('btn_startdt', text.textStartdt, true)
 addActionBot0c('btn_starti', text.textStarti, true)
+addActionBot0a('btn_start2', text.textStart2, true)
 addActionBot0k1('btn_fsik', text.textKom, true)
 addActionBot0k2('btn_fsikdt', text.textKom, true)
 addActionBot0k3('btn_fsikii', text.textKom, true)
