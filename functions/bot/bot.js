@@ -388,7 +388,7 @@ function addActionBotС1(id_btn, exports, preview) {
       await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
         [
           [Markup.button.callback('Программы кредитования','btn_msp1')], [Markup.button.callback('Анкета клиента','btn_kom2'),
-          Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          Markup.button.callback('Перечень файлов на запрос','btn_bk1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
         } catch (e) {
