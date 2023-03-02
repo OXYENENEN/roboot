@@ -145,8 +145,7 @@ function addActionBot1a(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/grant-agroprogress.jpg' });
       await ctx.replyWithHTML(text.textA11, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Краткая справка','btn_AgroP1'), Markup.button.callback('Анкета клиента','btn_kom2')],
-          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Краткая справка','btn_AgroP1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
         } catch (e) {
@@ -204,8 +203,7 @@ bot.action('btn_A22', async (ctx) => {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/agroturizm.jpg' });
       await ctx.replyWithHTML(text.textA12, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Презентация','btn_AgroT1'), Markup.button.callback('Анкета клиента','btn_kom2')],
-          [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+          [Markup.button.callback('Презентация','btn_AgroT1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
         } catch (e) {
@@ -231,9 +229,9 @@ function addActionBot10c(id_btn, exports, preview) {
   bot.action('btn_A3', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/agro_razv.jpg' });
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-Sq5cmlZoIW5Z.jpg' });
       await ctx.replyWithHTML(text.textA3, Markup.inlineKeyboard([
-        [Markup.button.callback('Памятка для кооперативов','btn_Rmtb')], [Markup.button.callback('Анкета клиента','btn_D2')],
+        [Markup.button.callback('Памятка для кооперативов','btn_Rmtb')],
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ]))
       } catch (e) {
@@ -416,7 +414,7 @@ function addActionBotС1(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/loan1.jpg' });
       await ctx.replyWithHTML(text.textC1, Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Программы кредитования','btn_msp1')], [Markup.button.callback('Анкета клиента','btn_kom2'),
+          [Markup.button.callback('Программы кредитования','btn_msp1'),
           Markup.button.callback('Перечень файлов на запрос','btn_bk1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
         ))
@@ -449,7 +447,7 @@ ctx.deleteMessage();
   bot.action('btn_bk1', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Документы на запрос Банк Казани.pdf'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Документы на запрос для Банка.pdf'})
     } catch (e) {
       console.error(e)
     }})
