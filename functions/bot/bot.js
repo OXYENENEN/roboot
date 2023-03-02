@@ -29,7 +29,7 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Старт-1', 'btn_start')],
             [Markup.button.callback('Старт-ЦТ', 'btn_startdt')],
             [Markup.button.callback('Старт-ИИ', 'btn_starti')],
-            [Markup.button.callback('Старт-2', 'btn_start2')],
+            [Markup.button.callback('Старт-2', 'btn_startК2')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
             [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
             [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
@@ -701,7 +701,7 @@ function addActionBot0c(id_btn, exports, preview) {
 
 // Старт-2
 function addActionBot0c(id_btn, exports, preview) {
-  bot.action('btn_start2', async (ctx) => {
+  bot.action('btn_startК2', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
@@ -1178,15 +1178,11 @@ addActionBot2d('btn_mpt', text.textMrp, true)
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
-exports.handler = async event => {
-  try {
-    await bot.handleUpdate(JSON.parse(event.body))
-    return { statusCode: 200, body: "" }
-  } catch (e) {
-    console.error("error in handler:", e)
-    return { statusCode: 400, body: "This endpoint is meant for bot and telegram communication" }
-  }
-}
+
+exports.handler = async (event) => {
+  console.log("Received an update from Telegram!", event.body);
+  return { statusCode: 200 };
+};
 
 bot.launch();
 
