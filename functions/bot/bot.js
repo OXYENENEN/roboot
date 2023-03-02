@@ -40,7 +40,19 @@ bot.command('fsie', async (ctx) => {
       } catch (e) {
         console.error(e) }
 })
-
+bot.command('guide', async (ctx) => {
+  try {
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/977448.jpg' });
+    await ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
+      [
+        Markup.button.url('Обзор', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
+      ]
+)
+)    
+  } catch (e) {
+    console.error(e)
+  }
+})
 // Подбор программы
 bot.command('go', async (ctx) => {
   sendStartMessage(ctx);
@@ -53,19 +65,12 @@ function sendStartMessage(ctx){
   try {
     ctx.replyWithHTML('<b>Какой вид деятельности у клиента?</b>', Markup.inlineKeyboard(
       [
+        [Markup.button.callback('Промышленность', 'btn_D')],
+        [Markup.button.callback('Информационные технологии', 'btn_B')],
         [Markup.button.callback('Сельское хозяйство', 'btn_A')],
-        [Markup.button.callback('IT', 'btn_B')],
-        [Markup.button.callback('Клиенту интересно кредитование', 'btn_C')],
-        [Markup.button.callback('Промышленность', 'btn_D')]
+        [Markup.button.callback('Интересно льготное кредитование', 'btn_C')],        
       ]
     ))
-
-    ctx.replyWithHTML('<b>Подробные условия обо всех программах</b>', Markup.inlineKeyboard(
-      [
-        Markup.button.url('Обзор', 'https://docs.google.com/spreadsheets/d/1TS_-3xnuAiV7DhfpY5-N47yVHBWDbAKkWGbAW8iwRjU/edit#gid=407360852')
-      ]
-)
-)
   } catch (e) {
     console.error(e)
   }
@@ -81,7 +86,7 @@ function addActionBot27(id_btn, text) {
         await ctx.replyWithPhoto({ source: 'functions/bot/img/agro1.jpg' });
  await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
           [
-            [Markup.button.callback('ООО', 'btn_A1')],
+            [Markup.button.callback('ЮЛ(ООО,АО и прочее)', 'btn_A1')],
             [Markup.button.callback('ИП/КФХ', 'btn_A2')],
             [Markup.button.callback('Кооператив', 'btn_A3')],
             [Markup.button.callback('Физическое лицо', 'btn_A41')]
@@ -252,7 +257,7 @@ function addActionBot1bY(id_btn, text) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/dt.jpg' });
       await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('ООО', 'btn_B1')],
+          [Markup.button.callback('ЮЛ(ООО,АО и прочее)', 'btn_B1')],
           [Markup.button.callback('Физическое лицо/ИП', 'btn_B2')],
         ]
       ))
@@ -431,7 +436,7 @@ function addActionBot1b(id_btn, text) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/c3.jpg' });
       await ctx.replyWithHTML('<b>Уточните форму регистрации заявителя</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('ООО', 'btn_00u')],
+          [Markup.button.callback('ЮЛ(ООО,АО и прочее)', 'btn_00u')],
           [Markup.button.callback('Физическое лицо/ИП', 'btn_01u')],
         ]
       ))
