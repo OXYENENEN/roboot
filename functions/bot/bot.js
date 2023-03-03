@@ -489,7 +489,20 @@ function addActionBot1b(id_btn, text) {
     }
   })
 // ФЛ/ИП
-  bot.action('btn_01u', async (ctx) => {
+bot.action('btn_01u', async (ctx) => {
+  try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
+    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+      [
+        [Markup.button.callback('Старт-1', 'btn_start')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
+    ))
+  } catch (e) {
+    console.error(e)
+  }
+})
+  bot.action('btn_D1u', async (ctx) => {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
@@ -509,6 +522,7 @@ function addActionBot1b(id_btn, text) {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт-1', 'btn_start')],
+          [Markup.button.callback('Акселерация', 'btn_axel')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -528,19 +542,7 @@ function addActionBot1b(id_btn, text) {
   })
 // Выберите особенности проекта
 // Менее 30 млн
-bot.action('btn_D1u', async (ctx) => {
-  try {
-    await ctx.answerCbQuery()
-    await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
-      [
-        [Markup.button.callback('Старт', 'btn_start')],
-        [Markup.button.callback('Акселерация', 'btn_axel')],
-        [Markup.button.callback('Назад в меню выбора', 'go')]]
-    ))
-  } catch (e) {
-    console.error(e)
-  }
-})
+
 
 // Более 30 млн
 bot.action('btn_D2u', async (ctx) => {
@@ -577,7 +579,7 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Коммерциализация', 'btn_fsik')],
-          [Markup.button.callback('Коммерциализация', 'btn_fsikimprt')],          
+          [Markup.button.callback('Коммерциализация Импортозамещение', 'btn_fsikimprt')],          
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
