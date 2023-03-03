@@ -35,8 +35,7 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
-            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
-            [Markup.button.callback('Другое', 'btn_other2')]
+            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')]
           ]
         ))
       } catch (e) {
@@ -98,9 +97,8 @@ function sendStartMessage(ctx){
         [Markup.button.callback('Информационные технологии', 'btn_B')],
         [Markup.button.callback('Сельское хозяйство', 'btn_A')],
         [Markup.button.callback('Социальные проекты', 'btn_Q')],
-        [Markup.button.callback('Финансирование экспорта', 'btn_W')],
-        [Markup.button.callback('Поиск инноваций', 'btn_E')],
-        [Markup.button.callback('Интересно льготное кредитование', 'btn_C')],        
+        [Markup.button.callback('Экспортная деятельность', 'btn_W')],
+        [Markup.button.callback('Другие услуги', 'btn_R')],
       ]
     ))
   } catch (e) {
@@ -381,8 +379,7 @@ bot.action('btn_B12', async (ctx) => {
                 [[Markup.button.callback('Коммерциализация', 'btn_fsik')],
           [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
           [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
-          [Markup.button.callback('РФРИТ', 'btn_rfr'), 
-          Markup.button.callback('Другое', 'btn_other1')],
+          [Markup.button.callback('РФРИТ', 'btn_rfr')], 
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -542,7 +539,6 @@ bot.action('btn_D2u', async (ctx) => {
         [
           [Markup.button.callback('Старт', 'btn_start')],
           [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
-          [Markup.button.callback('Другое', 'btn_other2')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -556,7 +552,6 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Коммерциализация', 'btn_fsik')],
-          [Markup.button.callback('Другое', 'btn_other1')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -668,6 +663,24 @@ function addActionBotE(id_btn, text) {
       console.error(e)
     }})
     }
+
+// Раздел 7. Другие услуги
+
+function addActionBotR(id_btn, text) {
+  bot.action('btn_R', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>Рекомендуется рассмотреть следущие услуги</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Научный совет', 'btn_E')],
+          [Markup.button.callback('Кредитование', 'btn_C')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+
 
 // Старт
 function addActionBot0a(id_btn, exports, preview) {
@@ -1274,7 +1287,7 @@ addActionBotW('btn_W', text)
 addActionBotW1('btn_w1', text)
 addActionBotW1('btn_w2', text)
 addActionBotE('btn_E', text)
-
+addActionBotR('btn_R', text)
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
