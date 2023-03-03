@@ -379,7 +379,8 @@ bot.action('btn_B12', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
                 [[Markup.button.callback('Коммерциализация', 'btn_fsik')],
           [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
-          [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')], 
+          [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')],
+          [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikimprt')],          
           [Markup.button.callback('РФРИТ', 'btn_rfr')], 
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
