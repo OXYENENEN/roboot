@@ -36,7 +36,7 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
             [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')],
-            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikimprt')]
+            [Markup.button.callback('Коммерциализация-Импортозамещение', 'btn_fsikimprt')]
           ]
         ))
       } catch (e) {
@@ -1005,7 +1005,7 @@ function addActionBot0k4(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
       await ctx.replyWithHTML(text.textKomimprt, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1i'), Markup.button.callback('Анкета клиента','btn_kom2')],
+        [Markup.button.callback('Положение по конкурсу','btn_kom1iprt'), Markup.button.callback('Анкета клиента','btn_kom2')],
         [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
         [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
@@ -1155,9 +1155,8 @@ function addActionBot2d(id_btn, exports, preview) {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/mpt.jpg' });
       await ctx.replyWithHTML(text.textMrp, Markup.inlineKeyboard([
-        [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиента','btn_kom2')]],
-
-        [Markup.button.callback('Назад в меню выбора', 'go')]
+        [Markup.button.callback('Анкета клиента','btn_kom2')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
       } catch (e) {
       console.error(e)
