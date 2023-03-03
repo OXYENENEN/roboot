@@ -506,7 +506,6 @@ bot.action('btn_01u', async (ctx) => {
   bot.action('btn_D1u', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
       await ctx.replyWithHTML('<b>Как долго зарегистрировано ЮЛ?</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Больше 2 лет', 'btn_none')],
