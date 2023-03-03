@@ -31,11 +31,12 @@ bot.command('fsie', async (ctx) => {
             [Markup.button.callback('Старт-ИИ', 'btn_starti')],
             [Markup.button.callback('Старт-2', 'btn_startК2')],
             [Markup.button.callback('Акселерация', 'btn_axel')],
-            [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
+            [Markup.button.callback('Развитие-НТИ (Проекты-маяки)', 'btn_grow')],
             [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
             [Markup.button.callback('Коммерциализация', 'btn_fsik')],
             [Markup.button.callback('Коммерциализация-ЦТ', 'btn_fsikdt')],
-            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')]
+            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikii')],
+            [Markup.button.callback('Коммерциализация-ИИ', 'btn_fsikimprt')]
           ]
         ))
       } catch (e) {
@@ -183,7 +184,7 @@ function addActionBot1(id_btn, exports, preview) {
           await ctx.replyWithHTML(text.textA21, Markup.inlineKeyboard(
             [
               [Markup.button.callback('Краткая справка по проекту','btn_SFarm1'), Markup.button.callback('Анкета клиента','btn_kom2')],
-              [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+ 
               [Markup.button.callback('Назад в меню выбора', 'go')]]
             ))
             } catch (e) {
@@ -362,7 +363,7 @@ bot.action('btn_B12', async (ctx) => {
       await ctx.answerCbQuery()
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
-          [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
+          [Markup.button.callback('Развитие-НТИ (Проекты-маяки)', 'btn_grow')],
           [Markup.button.callback('Развитие-ЦТ', 'btn_grow2')],
           [Markup.button.callback('Назад в меню выбора', 'go')]
         ]
@@ -492,9 +493,33 @@ function addActionBot1b(id_btn, text) {
     try {
       await ctx.answerCbQuery()
       await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
-      await ctx.replyWithHTML('<b>Рекомендуется программа Старт</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Как долго зарегистрировано ЮЛ?</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Больше 2 лет', 'btn_none')],
+          [Markup.button.callback('Меньше 2 лет', 'btn_01u9')]]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_01u9', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/start.jpg' });
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт-1', 'btn_start')],
+          [Markup.button.callback('Назад в меню выбора', 'go')]]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_none', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>К сожалению нет подходящей программы под Ваши критерии.</b>', Markup.inlineKeyboard(
+        [
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -538,7 +563,7 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Старт', 'btn_start')],
-          [Markup.button.callback('Развитие-НТИ', 'btn_grow')],
+          [Markup.button.callback('Развитие-НТИ (Проекты-маяки)', 'btn_grow')],
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -552,6 +577,7 @@ bot.action('btn_D2u', async (ctx) => {
       await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Коммерциализация', 'btn_fsik')],
+          [Markup.button.callback('Коммерциализация', 'btn_fsikimprt')],          
           [Markup.button.callback('Назад в меню выбора', 'go')]]
       ))
     } catch (e) {
@@ -882,7 +908,7 @@ function addActionBot0k1(id_btn, exports, preview) {
           await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
         } catch (e) {
           console.error(e)
@@ -923,7 +949,7 @@ function addActionBot0k2(id_btn, exports, preview) {
           await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
         } catch (e) {
           console.error(e)
@@ -964,7 +990,48 @@ function addActionBot0k3(id_btn, exports, preview) {
           await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
+        } catch (e) {
+          console.error(e)
+        }})
+}
+// Коммерциализация Импортозамещение
+function addActionBot0k4(id_btn, exports, preview) {
+  bot.action('btn_fsikimprt', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/kom.jpg' });
+      await ctx.replyWithHTML(text.textKomimprt, Markup.inlineKeyboard([
+        [Markup.button.callback('Положение по конкурсу','btn_kom1i'), Markup.button.callback('Анкета клиента','btn_kom2')],
+        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+        [Markup.button.callback('Назад в меню выбора', 'go')]]
+      ))
+      } catch (e) {
+      console.error(e)
+    }
+  })
+  bot.action('btn_kom1iprt', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Положение Коммерциализация-19_на сайт.pdf'})
+    } catch (e) {
+      console.error(e)
+    }})
+    bot.action('btn_kom2', async (ctx) => {
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      } catch (e) {
+        console.error(e)
+      }})
+      bot.action('btn_kom3', async (ctx) => {
+        try {
+          await ctx.answerCbQuery()
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
         } catch (e) {
           console.error(e)
@@ -995,7 +1062,7 @@ function addActionBotGr(id_btn, exports, preview) {
     bot.action('btn_gr2', async (ctx) => {
       try {
         await ctx.answerCbQuery()
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Развитие.docx'})
       } catch (e) {
         console.error(e)
       }})
@@ -1005,7 +1072,7 @@ function addActionBotGr(id_btn, exports, preview) {
           await ctx.replyWithDocument( { source: 'functions/bot/docs/1_Дорожная_карта_Развитие.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
         } catch (e) {
           console.error(e)
@@ -1034,7 +1101,7 @@ bot.action('btn_grd1', async (ctx) => {
   bot.action('btn_grd2', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Коммерциализация.docx'})
+      await ctx.replyWithDocument( { source: 'functions/bot/docs/Анкета Развитие.docx'})
     } catch (e) {
       console.error(e)
     }})
@@ -1044,7 +1111,7 @@ bot.action('btn_grd1', async (ctx) => {
         await ctx.replyWithDocument( { source: 'functions/bot/docs/1_Дорожная_карта_Развитие.docx'}),
         await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
         await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-        await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+        await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
         await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
       } catch (e) {
         console.error(e)
@@ -1087,7 +1154,7 @@ function addActionBot2d(id_btn, exports, preview) {
       await ctx.replyWithPhoto({ source: 'functions/bot/img/mpt.jpg' });
       await ctx.replyWithHTML(text.textMrp, Markup.inlineKeyboard([
         [Markup.button.callback('Положение по конкурсу','btn_kom1')], [Markup.button.callback('Анкета клиента','btn_kom2')]],
-        [Markup.button.callback('Перечень файлов на запрос', 'btn_kom3')],
+
         [Markup.button.callback('Назад в меню выбора', 'go')]
       ))
       } catch (e) {
@@ -1114,7 +1181,7 @@ function addActionBot2d(id_btn, exports, preview) {
           await ctx.replyWithDocument( { source: 'functions/bot/docs/01_Дорожная_карта_Коммерциализация.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/04_Анкета по участникам проектаКомм.xlsx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/2_Техническое задание_нов.docx'}),
-          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_Коммерциализация_—_копия.docx'}),
+          await ctx.replyWithDocument( { source: 'functions/bot/docs/Перечень_документов.docx'}),
           await ctx.replyWithDocument( { source: 'functions/bot/docs/3_Маркетинг_нов.xlsx'})
         } catch (e) {
           console.error(e)
@@ -1263,8 +1330,9 @@ addActionBot0b('btn_startdt', text.textStartdt, true)
 addActionBot0c('btn_starti', text.textStarti, true)
 addActionBot0a('btn_start2', text.textStart2, true)
 addActionBot0k1('btn_fsik', text.textKom, true)
-addActionBot0k2('btn_fsikdt', text.textKom, true)
-addActionBot0k3('btn_fsikii', text.textKom, true)
+addActionBot0k2('btn_fsikdt', text.textKomdt, true)
+addActionBot0k3('btn_fsikii', text.textKomi, true)
+addActionBot0k4('btn_fsikimprt', text.textKomimprt, true)
 addActionBotRR('btn_rfr', text, true)
 addActionBotRR('btn_rfr1', text.textRfr1, true)
 addActionBotRR('btn_rfr2', text.textRfr2, true)
