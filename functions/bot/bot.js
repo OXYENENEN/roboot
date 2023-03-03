@@ -97,6 +97,9 @@ function sendStartMessage(ctx){
         [Markup.button.callback('Промышленность', 'btn_D')],
         [Markup.button.callback('Информационные технологии', 'btn_B')],
         [Markup.button.callback('Сельское хозяйство', 'btn_A')],
+        [Markup.button.callback('Социальные проекты', 'btn_Q')],
+        [Markup.button.callback('Финансирование экспорта', 'btn_W')],
+        [Markup.button.callback('Поиск инноваций', 'btn_E')],
         [Markup.button.callback('Интересно льготное кредитование', 'btn_C')],        
       ]
     ))
@@ -329,7 +332,7 @@ function addActionBot1bY(id_btn, text) {
   bot.action('btn_B11', async (ctx) => {
     try {
       await ctx.answerCbQuery()
-      await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
+      await ctx.replyWithHTML('<b>Выберите стадию проекта</b>', Markup.inlineKeyboard(
         [
           [Markup.button.callback('Разработка инновационного продукта', 'btn_B111')],
           [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_B112')],
@@ -521,9 +524,9 @@ bot.action('btn_D1u', async (ctx) => {
 bot.action('btn_D2u', async (ctx) => {
   try {
     await ctx.answerCbQuery()
-    await ctx.replyWithHTML('<b>Выберите особенности проекта</b>', Markup.inlineKeyboard(
+    await ctx.replyWithHTML('<b>Выберите стадию проекта</b>', Markup.inlineKeyboard(
       [
-        [Markup.button.callback('Разработка и освоение производства нового товара (НИОКР)', 'btn_d121')],
+        [Markup.button.callback('Разработка инновационного продукта', 'btn_d121')],
         [Markup.button.callback('Cоздание/расширение производства инновационного продукта', 'btn_d122')],
       ]
     ))
@@ -577,6 +580,95 @@ bot.action('btn_D3u', async (ctx) => {
   }
 })
 }
+// Раздел 5 Социальные проекты
+function addActionBotQ(id_btn, text) {
+  bot.action('btn_Q', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('ФКИ', 'btn_q1')],
+          [Markup.button.callback('ФПГ', 'btn_q2')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+  function addActionBotQ1(id_btn, exports, preview) {
+    bot.action('btn_q1', async (ctx) => {
+     // ctx.deleteMessage();
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-u3Yntlz5Z2pvmgh.jpg' });
+       await ctx.replyWithHTML('ФКИ. Раздел в разработке', Markup.inlineKeyboard(
+          [Markup.button.callback('Назад в меню выбора', 'go')]));
+        } catch (e) {
+          console.error(e)
+        }})
+        bot.action('btn_q2', async (ctx) => {
+          // ctx.deleteMessage();
+           try {
+             await ctx.answerCbQuery()
+             await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-g16BqfQR0Khy6Y.jpg' });
+            await ctx.replyWithHTML('ФПГ. Раздел в разработке', Markup.inlineKeyboard(
+               [Markup.button.callback('Назад в меню выбора', 'go')]));
+             } catch (e) {
+               console.error(e)
+             }})
+      }
+
+// Раздел 6. Финансирование экспорта
+function addActionBotW(id_btn, text) {
+  bot.action('btn_W', async (ctx) => {
+    try {
+      await ctx.answerCbQuery()
+      await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-EEwAAQtp9XxDfu.jpg' });
+      await ctx.replyWithHTML('<b>Рекомендуются следующие программы</b>', Markup.inlineKeyboard(
+        [
+          [Markup.button.callback('Фонд Науки МОН РК (Казахстан)', 'btn_w1')],
+          [Markup.button.callback('Экспорт ЦТ', 'btn_w2')],
+        ]
+      ))
+    } catch (e) {
+      console.error(e)
+    }
+  })}
+  function addActionBotW1(id_btn, exports, preview) {
+    bot.action('btn_w1', async (ctx) => {
+     // ctx.deleteMessage();
+      try {
+        await ctx.answerCbQuery()
+        await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-A1PCyYjFQbckU14R.jpg' });
+       await ctx.replyWithHTML('Фонд Науки МОН РК (Казахстан). Раздел в разработке', Markup.inlineKeyboard(
+          [Markup.button.callback('Назад в меню выбора', 'go')]));
+        } catch (e) {
+          console.error(e)
+        }})
+        bot.action('btn_w2', async (ctx) => {
+          // ctx.deleteMessage();
+           try {
+             await ctx.answerCbQuery()
+             await ctx.replyWithPhoto({ source: 'functions/bot/img/1.png' });
+            await ctx.replyWithHTML('Экспорт ЦТ. Раздел в разработке', Markup.inlineKeyboard(
+               [Markup.button.callback('Назад в меню выбора', 'go')]));
+             } catch (e) {
+               console.error(e)
+             }})
+      }
+// Раздел 7
+function addActionBotE(id_btn, text) {
+    bot.action('btn_E', async (ctx) => {
+    try {
+    await ctx.answerCbQuery()
+    await ctx.replyWithPhoto({ source: 'functions/bot/img/imgonline-com-ua-Resize-RZL8MNLg0LHeGwX.jpg' });
+    ctx.replyWithHTML('Рекомендуется услуга Научный Совет. Раздел в разработке', Markup.inlineKeyboard(
+      [Markup.button.callback('Назад в меню выбора', 'go')]))
+    } catch (e) {
+      console.error(e)
+    }})
+    }
+
 // Старт
 function addActionBot0a(id_btn, exports, preview) {
   bot.action('btn_start', async (ctx) => {
@@ -1173,6 +1265,16 @@ addActionBotС1('btn_С2', text.textС2, true)
 // 4 раздел
 addActionBot1d('btn_frp', text.textFrp, true)
 addActionBot2d('btn_mpt', text.textMrp, true)
+
+addActionBotQ('btn_Q', text)
+
+addActionBotQ1('btn_q1', text)
+addActionBotQ1('btn_q2', text)
+addActionBotW('btn_W', text)
+addActionBotW1('btn_w1', text)
+addActionBotW1('btn_w2', text)
+addActionBotE('btn_E', text)
+
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
