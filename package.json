@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-"build": "bot.js",
     "deploy": "netlify-lambda build functions && netlify deploy --prod"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
