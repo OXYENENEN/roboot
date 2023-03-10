@@ -4,7 +4,8 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node functions/bot/bot.js",
+    "dev": "nodemon functions/bot/bot.js"
   },
   "keywords": [],
   "author": "",
