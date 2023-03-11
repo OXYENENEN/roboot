@@ -1,0 +1,22 @@
+{
+  "name": "roboot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "build": "node functions/bot/bot.js",
+    "dev": "nodemon functions/bot/bot.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "google-spreadsheet": "^3.3.0",
+    "netlify-lambda": "^2.0.15",
+    "telegraf": "^4.11.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
