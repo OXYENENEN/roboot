@@ -1,7 +1,8 @@
 [build]
-functions = "functions"
-command = "npm run dev"
-[[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
+  functions = "functions/"
+[dev]
+  envFiles = [".env"]
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
